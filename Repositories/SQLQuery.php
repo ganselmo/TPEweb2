@@ -10,25 +10,25 @@ class SQLQuery
     }
     function all($tabla)
     {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla)); //preparo consulta SQL
-        $query->execute(); //ejecuto consulta SQL
-        $obj = $query->fetchAll(PDO::FETCH_OBJ); //obtengo objeto
+        $query = ($this->db->prepare('SELECT * FROM '. $tabla)); 
+        $query->execute();
+        $obj = $query->fetchAll(PDO::FETCH_OBJ);
         return $obj;
     }
 
     function findByID($tabla,$idName,$id)
     {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$idName.' = ' .$id)); //preparo consulta SQL
-        $query->execute(); //ejecuto consulta SQL
-        $obj = $query->fetchAll(PDO::FETCH_OBJ); //obtengo objeto
+        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$idName.' = ' .$id));
+        $query->execute();
+        $obj = $query->fetchAll(PDO::FETCH_OBJ);
         return $obj;
     }
 
     function findByColumn($tabla,$column,$parameter)
     {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column." = '" .$parameter."'")); //preparo consulta SQL
-        $query->execute(); //ejecuto consulta SQL
-        $obj = $query->fetchAll(PDO::FETCH_OBJ); //obtengo objeto
+        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column." = '" .$parameter."'")); 
+        $query->execute();
+        $obj = $query->fetchAll(PDO::FETCH_OBJ); 
         return $obj;
     }
 
