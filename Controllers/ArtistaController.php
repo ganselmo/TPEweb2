@@ -1,18 +1,11 @@
 <?php
-require_once '.\Models\canciones.model.php';
-require_once '.\Views\canciones.view.php';
+require_once 'Controller.php';
+require_once '.\Models\Artista.php';
 
-class CancionesController extends Controller {
-    private $model;
-    private $view;
+class ArtistaController extends Controller {
 
     function __construct() {
-
-    }
-
-    public function get() {
-        $juegos = $this->model->getJuegos();
-        $this->view->displayJuegos($juegos);
+        $this->model = new Artista();
     }
 
     public function add() {
@@ -28,12 +21,12 @@ class CancionesController extends Controller {
         }
     }
 
-    public function delete($id) {
-        $this->model->deleteJuego($id);
+    public function delete() {
+        $this->model->delete($id);
         header("Location: " . BASE);
     }
 
-    public function update($id, $nombre, $jugadores, $cartas) {
+    public function update() {
         if(isset($_GET) && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['players'])) {
             if(isset($_GET['cards']) == "on") {
                 $cartas = 1;
@@ -53,3 +46,4 @@ class CancionesController extends Controller {
         }
     }
 }
+

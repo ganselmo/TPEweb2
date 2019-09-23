@@ -1,19 +1,18 @@
 <?php
 
-class Controller 
+abstract class Controller 
 {
-    private $model;
-    private $view;
-
-    function __construct() {
-        
-    }
+    protected $model;
+    protected $view;
     
-    abstract function add();
+    public abstract function add();
 
-    abstract function delete();
+    public abstract function delete();
 
-    abstract function update();
+    public abstract function update();
 
-    abstract function get();
+    public function get() {
+        $this->model->all();
+        var_dump($this->model->all());die;
+    }
 }
