@@ -10,40 +10,34 @@ class CancionController extends Controller {
     }
 
     public function add() {
-        if(isset($_GET) && isset($_GET['name']) && isset($_GET['players'])) {
-            if(isset($_GET['cards']) == "on") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $juego = array($_GET['name'], $_GET['players'], $cartas);
-            $this->model->addJuego($juego);
-            header("Location: " . BASE);
+        if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album'])) {
+            $cancion = array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']);
+            $this->model->add($cancion);
         }
+        header("Location: " . BASE);
     }
 
     public function delete() {
-        $this->model->delete($id);
+        if(isset($_POST) && isset($_POST['id'])) {
+            $this->model->delete($_POST['id']);
+        }
         header("Location: " . BASE);
     }
 
     public function update() {
-        if(isset($_GET) && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['players'])) {
-            if(isset($_GET['cards']) == "on") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $this->model->updateJuego($_GET['id'], $_GET['name'], $_GET['players'], $cartas);
-            header("Location: " . BASE);
-        } else {
-            if($cartas == "checked") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $juego = array($id, $nombre, $jugadores, $cartas);
-            $this->view->displayUpdateJuego($juego);
+        if(isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album'])) {
+            $this->model->update($_POST['id'], $_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']);
         }
+        header("Location: " . BASE);
+    }
+
+    public function findById($id) {
+        $obj = $this->model->findById($id);
+        var_dump($obj);die;
+    }
+
+    public function findByColumn($column,$parameter) {
+        $obj = $this->model->findByColumn($column,$parameter);
+        var_dump($obj);die;
     }
 }
