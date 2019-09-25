@@ -1,0 +1,18 @@
+{
+    "Routes":
+    {
+        "Artista":{
+            "method":"GET",
+            "controller":"ArtistaController",
+            "function":"index",
+            "params":[]
+        },
+        "Artista/{?}":{
+            "method":"GET",
+            "controller":"ArtistaController",
+            "function":"index",
+            "params":["{?}"]
+        }
+
+    }
+}

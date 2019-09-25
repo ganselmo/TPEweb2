@@ -8,6 +8,11 @@ class ArtistaController extends Controller {
         $this->model = new Artista();
     }
 
+    public function index()
+    {
+        
+    }
+
     public function add() {
         if(isset($_GET) && isset($_GET['name']) && isset($_GET['players'])) {
             if(isset($_GET['cards']) == "on") {
