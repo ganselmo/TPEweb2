@@ -1,10 +1,11 @@
 <?php
 
+require_once 'Controllers/Controller.php';
 class Route
 {
 
     private $url;
-
+    
     function __construct($action)
     {
         
@@ -15,11 +16,25 @@ class Route
 
     private function direct()
     {
-        $json = file_get_contents ("Repositories/RouteMap.json");
-        $json = json_decode($json);
-        
-        
 
+        $json = $this->retriveRoutesJSON();
+        var_dump($json);
+        var_dump ($this->url);
+        if(findMatch())
+        {
+
+        }
+        else{
+            
+        }  
+
+    }
+
+    private function retriveRoutesJSON()
+    {
+        $json =file_get_contents ("Repositories/RouteMap.json");
+        return json_decode($json);  
+        
     }
 
 
