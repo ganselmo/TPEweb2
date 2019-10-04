@@ -1,24 +1,68 @@
 {
-    "Routes":
-    {
-        " ":{
-            "method":"GET",
-            "controller":"HomeController",
-            "function":"index",
-            "params":[]
+    "routes": [
+        {
+            "point": "",
+            "method": "GET",
+            "controller": "HomeController",
+            "function": "index",
+            "params": []
         },
-        "Artista":{
-            "method":"GET",
-            "controller":"ArtistaController",
-            "function":"index",
-            "params":[]
+        {
+            "point": "Artistas",
+            "method": "GET",
+            "controller": "ArtistaController",
+            "function": "index",
+            "params": []
         },
-        "Artista/{?}":{
-            "method":"GET",
-            "controller":"ArtistaController",
-            "function":"index",
-            "params":["{?}"]
+        {
+            "point": "Artistas",
+            "method": "GET",
+            "controller": "ArtistaController",
+            "function": "show",
+            "params": [
+                "{?}"
+            ]
         }
-
-    }
+        ,
+        {
+            "point": "Artistas",
+            "method": "PUT",
+            "controller": "ArtistaController",
+            "function": "edit",
+            "params": [
+                "{?}"
+            ]
+        }
+        ,
+        {
+            "point": "Artistas",
+            "method": "PATCH",
+            "controller": "ArtistaController",
+            "function": "save",
+            "params": [
+                "{?}"
+            ]
+        }
+        ,
+        {
+            "point": "Artistas",
+            "method": "POST",
+            "controller": "ArtistaController",
+            "function": "insert",
+            "params": [
+                "{?}"
+            ]
+        }
+        ,
+        {
+            "point": "Artistas",
+            "method": "DELETE",
+            "controller": "ArtistaController",
+            "function": "delete",
+            "params": [
+                "{?}"
+            ]
+        }
+    ]
+    
 }
