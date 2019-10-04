@@ -6,7 +6,7 @@ class SQLQuery
     private $db;
     function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_cancionero;charset=utf8', 'geronimo', 'avyE9ob6CE7XDgft');
+        $this->db = new PDO('mysql:host=localhost;dbname=db_cancionero;charset=utf8', 'root', '');
     }
     function all($tabla)
     {
