@@ -1,6 +1,6 @@
 <?php 
 require_once("Models/Model.php");
-class Artista extends Model
+class ArtistaModel extends Model
 {
     protected $tabla = 'artistas';
     
