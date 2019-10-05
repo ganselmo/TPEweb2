@@ -1,12 +1,13 @@
 <?php
 require_once 'Controller.php';
-require_once '.\Models\Cancion.php';
-//require_once '.\Views\canciones.view.php';
+require_once '.\Models\CancionModel.php';
+require_once '.\Views\CancionView.php';
 
-class CancionController extends Controller {
+class CancionController extends Controller{
 
     function __construct() {
-        $this->model = new Cancion();
+        $this->model = new CancionModel();
+        $this->view = new CancionView();
     }
 
     public function add() {
