@@ -1,6 +1,6 @@
 <?php
 
-abstract class Controller 
+class Controller 
 {
     protected $model;
     protected $view;
