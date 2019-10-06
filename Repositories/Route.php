@@ -31,9 +31,17 @@ class Route
         if ($route == 'No Route') {       
             
         } else {
-            
+            require_once("Controllers/".$route->controller.".php");
             $controller = new $route->controller();
-            call_user_func($route->function);    
+            if(isset($params))
+            {
+                call_user_func_array(array($controller,$route->function), array($params));  
+            }
+            else
+            {
+                call_user_func(array($controller,$route->function));
+            }
+           
         }
     }
 

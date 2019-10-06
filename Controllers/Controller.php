@@ -1,11 +1,13 @@
 <?php
 
+require_once 'Views/View.php';
 class Controller 
 {
-    protected $model;
-    protected $view;
     
+    private $model;
+    private $view;
 
+    
 
 
     

@@ -2,53 +2,37 @@
 require_once 'Controller.php';
 require_once '.\Models\Artista.php';
 
-class ArtistaController extends Controller {
+class ArtistaController extends Controller
+{
 
-    function __construct() {
+    function __construct()
+    {
         $this->model = new Artista();
+        $this->view = new View('Artista/index');
+        
     }
 
     public function index()
     {
+        $models = $this->model->all();
         
+        $this->view->returnView($models);
+    }
+    public function show($id)
+    {
+        $artista = $this->model->findById($id);
+        $this->returnView('Artista/show', $artista);
     }
 
-    public function add() {
-        if(isset($_GET) && isset($_GET['name']) && isset($_GET['players'])) {
-            if(isset($_GET['cards']) == "on") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $juego = array($_GET['name'], $_GET['players'], $cartas);
-            $this->model->addJuego($juego);
-            header("Location: " . BASE);
-        }
-    }
+    public function edit($id)
+    { }
 
-    public function delete() {
-        $this->model->delete($id);
-        header("Location: " . BASE);
-    }
+    public function insert($params)
+    { }
 
-    public function update() {
-        if(isset($_GET) && isset($_GET['id']) && isset($_GET['name']) && isset($_GET['players'])) {
-            if(isset($_GET['cards']) == "on") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $this->model->updateJuego($_GET['id'], $_GET['name'], $_GET['players'], $cartas);
-            header("Location: " . BASE);
-        } else {
-            if($cartas == "checked") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $juego = array($id, $nombre, $jugadores, $cartas);
-            $this->view->displayUpdateJuego($juego);
-        }
-    }
+    public function delete($id)
+    { }
+
+    public function update($id)
+    { }
 }
-
