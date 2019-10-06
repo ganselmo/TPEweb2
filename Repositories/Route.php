@@ -12,10 +12,11 @@ class Route
 
         
         $this->url = explode('/',$_GET['action']);
-
+        var_dump($this->url);
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->seeSession();
         $this->direct();
+       
     }
     private function seeSession()
     {
@@ -24,11 +25,16 @@ class Route
     private function direct()
     {
 
-        var_dump($this->url);
-
         $json = $this->retriveRoutesJSON();
         $this->findMatch($json);
-        $route = $this->findMatch($json);
+        if($this->findMatch($json) == 'No Route')
+        {
+            
+        }
+        else{
+            $route = $this->findMatch($json);
+        }
+        
 
 
     }
@@ -49,6 +55,7 @@ class Route
                 return $route;
             }
         }
+        return "No Route";
        
     }
 }
