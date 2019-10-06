@@ -6,37 +6,35 @@ class Route
 
     private $url;
     private $method;
+    private $params;
 
     function __construct()
     {
-
-        
-        $this->url = explode('/',$_GET['action']);
-        var_dump($this->url);
-        $this->method = $_SERVER['REQUEST_METHOD'];
         $this->seeSession();
+        $this->method = $_SERVER['REQUEST_METHOD'];
+
+        $sanitizedURL = explode('?', $_GET['action']);
+        $this->url = $sanitizedURL[0];
+        if (isset($sanitizedURL[1])) {
+            $this->params = $sanitizedURL[1];
+        }
         $this->direct();
-       
     }
     private function seeSession()
-    {
+    { 
 
     }
     private function direct()
     {
-
         $json = $this->retriveRoutesJSON();
-        $this->findMatch($json);
-        if($this->findMatch($json) == 'No Route')
-        {
+        $route = $this->findMatch($json);
+        if ($route == 'No Route') {       
             
+        } else {
+            
+            $controller = new $route->controller();
+            call_user_func($route->function);    
         }
-        else{
-            $route = $this->findMatch($json);
-        }
-        
-
-
     }
 
     private function retriveRoutesJSON()
@@ -47,15 +45,29 @@ class Route
 
     private function findMatch($json)
     {
-
-
         foreach ($json->routes as $route) {
 
-            if ($route->point == $this->url && $route->method == $this->method) {
+            if ($this->urlMatches($route->point) && $this->methodMatches($route->method)) {
                 return $route;
             }
         }
         return "No Route";
-       
+    }
+
+    private function urlMatches($url)
+    {
+        if ($this->url == $url) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private function methodMatches($method)
+    {
+        if ($this->method == $method) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

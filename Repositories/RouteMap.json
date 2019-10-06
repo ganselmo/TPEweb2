@@ -8,7 +8,7 @@
             "params": []
         },
         {
-            "point": "Artistas/[?]",
+            "point": "Artistas/Ver",
             "method": "GET",
             "controller": "ArtistaController",
             "function": "index",
@@ -18,7 +18,7 @@
         }
         ,
         {
-            "point": "Artistas/Edit/[?]",
+            "point": "Artistas/Edit",
             "method": "GET",
             "controller": "ArtistaController",
             "function": "edit",
@@ -28,7 +28,7 @@
         }
         ,
         {
-            "point": "Artistas/Patch/[?]",
+            "point": "Artistas/Patch",
             "method": "POST",
             "controller": "ArtistaController",
             "function": "save",
@@ -38,7 +38,7 @@
         }
         ,
         {
-            "point": "Artistas/[?]",
+            "point": "Artistas/Post",
             "method": "POST",
             "controller": "ArtistaController",
             "function": "insert",
@@ -48,7 +48,7 @@
         }
         ,
         {
-            "point": "Artistas/Delete/[?]",
+            "point": "Artistas/Delete",
             "method": "POST",
             "controller": "ArtistaController",
             "function": "delete",
