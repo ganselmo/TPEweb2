@@ -1,19 +1,21 @@
 <?php 
-require_once("Models/Model.php");
+require_once("Models/Modelo.php");
 
-class ArtistaModel
+class ArtistaModel extends Modelo
 {
     public function __construct () {
-        $this->db = Database::getInstance();
+        $this->db = Database::getInstance()->getConnection();
         $this->query = new QuerySQL();
         $this->tabla = 'artista';
     }
 
-    public function get() {
-        $query = $this->db->prepare(selectAll($this->tabla)); 
-        $query->execute();
-        $obj = $query->fetchAll(PDO::FETCH_OBJ);
-        var_dump($obj);die;
-        return $obj;
+    public function create($values) {
+        $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('nombre','apellido','fechanac','ranking')));
+        $sentencia->execute($values);
+    }
+
+    public function update($values) {
+        $sentencia = $this->db->prepare($this->query->update($this->tabla, array('nombre','apellido','fechanac','ranking')));
+        $sentencia->execute($values);
     }
 }

@@ -16,7 +16,9 @@ abstract class Modelo
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
-    /* public abstract function update(); */
+    
+    public abstract function update($values);
+
     public function delete($id) {
         $sentencia = $this->db->prepare($this->query->delete($this->tabla));
         $sentencia->execute(array($id));
