@@ -10,31 +10,32 @@ class CancionController extends Controller{
         $this->view = new CancionView();
     }
 
-    public function add() {
-        if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album'])) {
-            $cancion = array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']);
-            $this->model->add($cancion);
+    public function create() {
+        if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
+            $this->model->create(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']));
         }
-        header("Location: " . BASE);
+        header("Location: " . BASE_CANCION);
     }
 
     public function delete() {
         if(isset($_POST) && isset($_POST['id'])) {
             $this->model->delete($_POST['id']);
         }
-        header("Location: " . BASE);
+        header("Location: " . BASE_CANCION);
     }
 
     public function update() {
-        if(isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album'])) {
-            $this->model->update($_POST['id'], $_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']);
+        if(isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
+            $this->model->update(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking'], $_POST['id']));
+            header("Location: " . BASE_CANCION);
+        } elseif (isset($_GET) && isset($_GET['id'])) {
+            $cancion = $this->findById($_GET['id']);
+            $this->view->displayUpdate($cancion);
         }
-        header("Location: " . BASE);
     }
 
-    public function findById($id) {
-        $obj = $this->model->findById($id);
-        var_dump($obj);die;
+    private function findById($id) {
+        return $this->model->getByID($id);
     }
 
     public function findByColumn($column,$parameter) {

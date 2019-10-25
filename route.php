@@ -4,41 +4,41 @@ require_once 'Controllers\ArtistaController.php';
 
 $action = $_GET["action"];
 define("BASE", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-
-$cancion = new CancionController();
-$artista = new ArtistaController();
+define("BASE_CANCION", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/cancion');
 
 if($action == ''){
     echo "Página en contrucción";
 }else{
     $partesURL = explode("/", $action);
     if($partesURL[0] == "cancion") {
-        if((count($partesURL) > 1) && ($partesURL[1] != "") && ($partesURL[2] != "")) {
-            if($partesURL[2] == "add") {
-                $cancion->add();
-            } elseif($partesURL[2] == "delete") {
-                $cancion->delete();
-            } elseif($partesURL[2] == "update") {
-                $cancion->update();
-            } elseif($partesURL[2] == "findId") {
-                $cancion->findById($partesURL[1]);
-            } elseif($partesURL[2] == "findColumn") {
-                $cancion->findByColumn($partesURL[3],$partesURL[1]);
+        $cancionController = new CancionController();
+        if((count($partesURL) > 1) && ($partesURL[1] != "")) {
+            if($partesURL[1] == "create") {
+                $cancionController->create();
+            } elseif($partesURL[1] == "delete") {
+                $cancionController->delete();
+            } elseif($partesURL[1] == "update") {
+                $cancionController->update();
+            } elseif($partesURL[1] == "findId") {
+                $cancionController->findById($partesURL[1]);
+            } elseif($partesURL[1] == "findColumn") {
+                $cancionController->findByColumn($partesURL[3],$partesURL[1]);
             }
         } else {
-            $cancion->get();
+            $cancionController->get();
         }
     } elseif ($partesURL[0] == "artista") {
-        if((count($partesURL) > 1) && ($partesURL[1] != "") && ($partesURL[2] != "")) {
-            if($partesURL[2] == "add") {
-                $artista->add();
-            } elseif($partesURL[2] == "delete") {
-                $artista->delete();
-            } elseif($partesURL[2] == "update") {
-                $artista->update();
+        $artistaController = new ArtistaController();
+        if((count($partesURL) > 1) && ($partesURL[1] != "")) {
+            if($partesURL[1] == "create") {
+                $artistaController->add();
+            } elseif($partesURL[1] == "delete") {
+                $artistaController->delete();
+            } elseif($partesURL[1] == "update") {
+                $artistaController->update();
             }
         } else {
-            $artista->get();
+            $artistaController->get();
         }
     }
 }

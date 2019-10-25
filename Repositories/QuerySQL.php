@@ -43,15 +43,12 @@ class QuerySQL
             }
         }
         $sql .= " WHERE id=?";
-        var_dump($sql);die;
         return $sql;
     }
     
-    public function selectByID($tabla,$idName,$id) {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$idName.' = ?'));
-        $query->execute(array($id));
-        $obj = $query->fetchAll(PDO::FETCH_OBJ);
-        return $obj;
+    public function selectByID($tabla) {
+        $sql = 'SELECT * FROM '. $tabla . ' WHERE id = ?';
+        return $sql;
     }
 
     public function selectByColumn($tabla,$column,$parameter) {

@@ -16,6 +16,13 @@ abstract class Modelo
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
+
+    public function getByID($id) {
+        $query = $this->db->prepare($this->query->selectByID($this->tabla)); 
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
     
     public abstract function update($values);
 
