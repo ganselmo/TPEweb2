@@ -32,6 +32,20 @@ class QuerySQL
         $sql .=")";
         return $sql;
     }
+
+    public function update($tabla, $columns) {
+        $sql = "UPDATE ";
+        $sql .= $tabla . " SET ";
+        for($i = 0; $i < count($columns); $i++) {
+            $sql .= $columns[$i] . " = ?";
+            if($i < count($columns) - 1) {
+                $sql .= ", ";
+            }
+        }
+        $sql .= " WHERE id=?";
+        var_dump($sql);die;
+        return $sql;
+    }
     
     public function selectByID($tabla,$idName,$id) {
         $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$idName.' = ?'));
