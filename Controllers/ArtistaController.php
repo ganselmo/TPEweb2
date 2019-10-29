@@ -1,11 +1,11 @@
 <?php
 require_once 'Controller.php';
-require_once '.\Models\Artista.php';
+require_once '.\Models\ArtistaModel.php';
 
 class ArtistaController extends Controller {
 
     function __construct() {
-        $this->model = new Artista();
+        $this->model = new ArtistaModel();
     }
 
     public function index()
