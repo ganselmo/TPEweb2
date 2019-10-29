@@ -1,13 +1,16 @@
 <?php
 
-abstract class Controller 
+class Controller 
 {
     protected $model;
     protected $view;
     
-    /* public abstract function create(); */
+    public function __construct()
+    {
+        /* TODO : Checkear Sesion*/
+    }
 
-    public abstract function delete();
+    /*public abstract function delete();*/
 
     /* public abstract function update(); */
 

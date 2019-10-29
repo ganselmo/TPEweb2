@@ -1,61 +1,57 @@
 <?php
 
-require_once 'Controllers/Controller.php';
+
 class Route
 {
 
     private $url;
-    private $method;
+    private $httpMethod;
+    private $controllerMethod;
+    private $controller;
+    private $parameters= [];
 
-    function __construct()
+    function __construct($url,$httpMethod,$controller,$controllerMethod,$parameters)
     {
+        $this->url = $url;
+        $this->httpMethod = $httpMethod;
+        $this->controller = $controller;
+        $this->controllerMethod = $controllerMethod;
 
-        
-        $this->url = explode('/',$_GET['action']);
-        var_dump($this->url);
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->seeSession();
-        $this->direct();
-       
-    }
-    private function seeSession()
-    {
-
-    }
-    private function direct()
-    {
-
-        $json = $this->retriveRoutesJSON();
-        $this->findMatch($json);
-        if($this->findMatch($json) == 'No Route')
-        {
-            
+        if($parameters){
+            $this->parameters = $parameters;
         }
-        else{
-            $route = $this->findMatch($json);
-        }
-        
-
-
     }
-
-    private function retriveRoutesJSON()
+  
+    public function direct()
     {
-        $json = file_get_contents("Repositories/RouteMap.json");
-        return json_decode($json);
+        require_once("Controllers/".$this->controller.".php");
+
+        $controller=new $this->controller;
+        $method  =$this->controllerMethod;
+        $params = $this->parameters;
+        if(isset($params))
+        $controller->$method($params); 
+        else
+        $controller->$method();
+
     }
 
-    private function findMatch($json)
+    public function directDefault()
     {
 
-
-        foreach ($json->routes as $route) {
-
-            if ($route->point == $this->url && $route->method == $this->method) {
-                return $route;
-            }
-        }
-        return "No Route";
-       
     }
+
+    public function getURL()
+    {
+        return $this->url;
+    }
+
+    public function getHTTPMethod()
+    {
+        return $this->httpMethod;
+    }
+
+    
+
+  
 }

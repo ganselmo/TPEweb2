@@ -6,11 +6,13 @@ class ArtistaController extends Controller {
 
     function __construct() {
         $this->model = new ArtistaModel();
+        $this->view= new ArtistaView();
     }
 
     public function index()
     {
-        
+        $artistas = $this->model->all();
+        $this->view->showIndex($artistas);
     }
 
     public function add() {

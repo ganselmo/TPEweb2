@@ -1,61 +1,59 @@
 {
     "routes": [
         {
-            "point": "",
-            "method": "GET",
+            "url": "",
+            "httpMethod": "GET",
             "controller": "HomeController",
-            "function": "index",
-            "params": []
+            "controllerMethod": "index"
+
         },
         {
-            "point": "Artistas/[?]",
-            "method": "GET",
+            "url": "Artistas/Get",
+            "httpMethod": "GET",
             "controller": "ArtistaController",
-            "function": "index",
-            "params": [
-                "{?}"
-            ]
-        }
-        ,
+            "controllerMethod": "index"
+
+        },
         {
-            "point": "Artistas/Edit/[?]",
-            "method": "GET",
+            "url": "Artistas/Get/[id]",
+            "httpMethod": "GET",
             "controller": "ArtistaController",
-            "function": "edit",
-            "params": [
-                "{?}"
-            ]
-        }
-        ,
+            "controllerMethod": "index"
+        },
         {
-            "point": "Artistas/Patch/[?]",
-            "method": "POST",
+            "url": "Artistas/Edit/[id]",
+            "httpMethod": "GET",
             "controller": "ArtistaController",
-            "function": "save",
-            "params": [
-                "{?}"
-            ]
-        }
-        ,
+            "controllerMethod": "edit"
+        },
         {
-            "point": "Artistas/[?]",
-            "method": "POST",
+            "url": "Artistas/Patch",
+            "httpMethod": "POST",
             "controller": "ArtistaController",
-            "function": "insert",
-            "params": [
-                "{?}"
+            "controllerMethod": "save",
+            "parameters": [
+                "id",
+                "data"
             ]
-        }
-        ,
+        },
         {
-            "point": "Artistas/Delete/[?]",
-            "method": "POST",
+            "url": "Artistas/New",
+            "httpMethod": "POST",
             "controller": "ArtistaController",
-            "function": "delete",
-            "params": [
-                "{?}"
+            "controllerMethod": "insert",
+            "parameters": [
+                "id",
+                "data"
+            ]
+        },
+        {
+            "url": "Artistas/Delete",
+            "httpMethod": "POST",
+            "controller": "ArtistaController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
             ]
         }
     ]
-    
 }
