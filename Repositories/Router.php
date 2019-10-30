@@ -47,42 +47,76 @@ class Router
     private function findMatch()
     {
 
-        foreach ($this->JsonRoutes as $jsonRoute) {
+        if ($this->url[0] == "") {
+            Route::directDefault();
+        } else {
 
-            
-            $route = new Route("","GET","HomeController","index",false);
-            $route->direct();
-            
-            
-            if ($jsonRoute->getHTTPMethod() == $this->httpMethod) {
+            $count = count($this->url);
 
-                $routeURLarray = explode("/", $jsonRoute->getURL());
-                if ($routeURLarray = null) { 
+
+
+            foreach ($this->JsonRoutes as $jsonRoute) {
+
+
+                if ($jsonRoute->getHttpMethod() == $this->httpMethod) {
+
+
+                    $matches = 0;
+                    $UrlArray = explode("/", $jsonRoute->getURL());
+
 
                     
-                } 
-                else {
-                    $quantity = $routeURLarray->count;
-                }
-                $actualQuantity = 0;
 
+                    if ($count == count($UrlArray)) {
 
-                foreach ($routeURLarray as $key => $part) {
-                    if ($part == $this->url[$key]) {
-                        $actualQuantity++;
-                    } else {
+                        $contador = 0;
+                        foreach ($this->url as $key => $actualURL) {
+                            // echo $contador." ".$UrlArray[$key];
+                            // echo "<br>";
+                            // echo $contador." ".$this->url[$key];
+                            // echo "<hr>";
+                     
+             
+                            if ($actualURL == $UrlArray[$key]) {
+                                $contador++;
+                            }
 
-                        if (strpos("[", $part)) {
-                            trim($part, ["[", "]"]);
-                            $jsonRoute->params = [$part, $this->url[$key]];
-                            $actualQuantity++;
+                            elseif(count(explode("[",$jsonRoute->getURL()))>1)
+                            {
+                                $parameter = trim(explode("[",$jsonRoute->getURL())[1],']');
+                                $value = $this->url[$key];
+                                $parameters = [$parameter=>$value];
+                                $contador++;
+                            }
+
                         }
+                        
+                   
+                        if ($contador == $count) {
+
+                            if(isset($parameters))
+                            {
+
+                                $route = new Route($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
+                                $jsonRoute->getControllerMethod(),  $parameters[$parameter] );
+                                $route->direct();
+                               
+                            }
+                            else{
+                                $route = new Route($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
+                                $jsonRoute->getControllerMethod(), false );
+                                $route->direct();
+                                
+                            }
+                           
+                            die;
+                        } 
                     }
                 }
-                if ($actualQuantity == $quantity) {
-                    $jsonRoute->direct();
-                }
+
+              
             }
+            Route::directDefault();
         }
     }
 }

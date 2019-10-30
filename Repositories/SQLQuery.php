@@ -17,10 +17,11 @@ class SQLQuery
     }
 
     function findByID($tabla,$idName,$id)
-    {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$idName.' = ' .$id));
-        $query->execute();
-        $obj = $query->fetchAll(PDO::FETCH_OBJ);
+    {  
+       
+        $query = ($this->db->prepare('SELECT * FROM '.$tabla.' WHERE '.$idName.' = ?'));
+        $query->execute(array($id));
+        $obj = $query->fetch(PDO::FETCH_OBJ);
         return $obj;
     }
 
@@ -32,5 +33,12 @@ class SQLQuery
         return $obj;
     }
 
+    function save($table,$data)
+    {
+        $query = $this->db->prepare('INSERT INTO ? VALUES ?'); 
+        $query;
+        $query->execute();
+
+    }
     
 }

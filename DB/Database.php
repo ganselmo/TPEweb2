@@ -6,7 +6,7 @@ class Database {
 
     private function __construct() {
         try {
-        $this->connection = new PDO('mysql:host=localhost;dbname=db_cancionero_v2;charset=utf8', 'root', '');
+        $this->connection = new PDO('mysql:host=localhost;dbname=db_cancionero;charset=utf8', 'root', '');
         } catch (PDOException $e) {
             echo 'Falló la conexión: ' . $e->getMessage();
             die;

@@ -1,13 +1,15 @@
 <?php
+require_once '.\Repositories\Session.php';
 
 class Controller 
 {
     protected $model;
     protected $view;
-    
-    public function __construct()
+    protected $session;
+   
+    public function __construct(Session $session)
     {
-        /* TODO : Checkear Sesion*/
+        $this->session = $session;
     }
 
     /*public abstract function delete();*/

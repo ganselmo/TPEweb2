@@ -1,19 +1,30 @@
 <?php
 require_once 'Controller.php';
-require_once '.\Models\ArtistaModel.php';
+require_once '.\Models\Artista.php';
+require_once '.\Views\ArtistaView.php';
 
 class ArtistaController extends Controller {
 
     function __construct() {
-        $this->model = new ArtistaModel();
+        $this->model = new Artista();
         $this->view= new ArtistaView();
     }
 
     public function index()
     {
         $artistas = $this->model->all();
+
         $this->view->showIndex($artistas);
     }
+
+    public function show($id)
+    {
+        $artista = $this->model->findById($id);
+
+        $this->view->showOne($artista);
+    }
+
+    
 
     public function add() {
         if(isset($_GET) && isset($_GET['name']) && isset($_GET['players'])) {

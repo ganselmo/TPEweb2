@@ -18,7 +18,7 @@
             "url": "Artistas/Get/[id]",
             "httpMethod": "GET",
             "controller": "ArtistaController",
-            "controllerMethod": "index"
+            "controllerMethod": "show"
         },
         {
             "url": "Artistas/Edit/[id]",
@@ -54,6 +54,41 @@
             "parameters": [
                 "id"
             ]
+        },
+        {
+            "url": "User/Login",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "LoginView"
+           
+        },
+        {
+            "url": "User/Login",
+            "httpMethod": "POST",
+            "controller": "UserController",
+            "controllerMethod": "login",
+            "parameters": [
+                "data"
+            ]
+        }
+        ,
+        {
+            "url": "User/Register",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "registerView"
+           
+        }
+        ,
+        {
+            "url": "User/Register",
+            "httpMethod": "POST",
+            "controller": "UserController",
+            "controllerMethod": "register",
+            "parameters": [
+                "data"
+            ]
+           
         }
     ]
 }

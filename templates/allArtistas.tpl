@@ -1,6 +1,9 @@
 {include file="header.tpl"}
-    <table>
-    <thead>
+
+
+<div class = "row">
+    <table class="table table-hover">
+    <thead class="thead-light">
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -17,10 +20,31 @@
             <td>{$artista->apellido}</td>
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
-            <td><button>Editar</button><button>Borrar</button></td>
+            <td>
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-sm-4">
+                        <form action="Artistas/Edit/{$artista->id}" method="GET">
+                            <button class= "btn btn-warning btn-md" type="submit">Modificar</button>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <form action="Artistas/Delete" method="POST">
+                            <input type="hidden" name="id" value="{$artista->id}">
+                            <button class= "btn btn-danger btn-md" type="submit">Borrar</button>
+                        </form>
+                    </div>
+                
+                </div>
+            </div
+            </td>
       
         </tr>
         {/foreach}
     </tbody>
     </table>
+</div>
+
 {include file="footer.tpl"}

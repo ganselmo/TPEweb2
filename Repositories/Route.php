@@ -16,7 +16,7 @@ class Route
         $this->httpMethod = $httpMethod;
         $this->controller = $controller;
         $this->controllerMethod = $controllerMethod;
-
+        
         if($parameters){
             $this->parameters = $parameters;
         }
@@ -36,8 +36,11 @@ class Route
 
     }
 
-    public function directDefault()
+    public static function directDefault()
     {
+        require_once("Controllers/HomeController.php");
+
+        (new HomeController())->index();
 
     }
 
@@ -51,7 +54,21 @@ class Route
         return $this->httpMethod;
     }
 
-    
+    public function matches($route)
+    {
+        
+    }
+
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    public function getControllerMethod()
+    {
+        return $this->controllerMethod;
+    }
+
 
   
 }
