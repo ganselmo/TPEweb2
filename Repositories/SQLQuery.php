@@ -27,8 +27,8 @@ class SQLQuery
 
     function findByColumn($tabla,$column,$parameter)
     {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column." = '" .$parameter."'")); 
-        $query->execute();
+        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column.' = ?')); 
+        $query->execute(array($parameter));
         $obj = $query->fetchAll(PDO::FETCH_OBJ); 
         return $obj;
     }
