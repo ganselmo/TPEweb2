@@ -5,7 +5,9 @@ class HomeView extends View{
 
 
     public function showIndex(){
-        //header("Location: " . BASE);
+        
+        $this->set_url(BASE);
+
         $this->smarty->display('templates/home.tpl');
     }
 

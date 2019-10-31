@@ -8,13 +8,12 @@ class View
     protected $errors;
     function __construct()
     {
-        $this->session = New Session();
+        $this->session = new Session();
         $this->smarty = new Smarty();
 
-        $this->smarty->assign('titulo',"Bienvenidos");
-        $this->smarty->assign('session',$this->session);
-        $this->smarty->assign('BASE',BASE);
-        
+        $this->smarty->assign('titulo', "Bienvenidos");
+        $this->smarty->assign('session', $this->session);
+        $this->smarty->assign('BASE', BASE);
     }
 
     function goHome()
@@ -23,8 +22,12 @@ class View
     }
     function errors($errors)
     {
-        
+
         $this->errors = $errors;
-        $this->smarty->assign('errors',$this->errors);
+        $this->smarty->assign('errors', $this->errors);
+    }
+    function set_url($url)
+    {
+        echo ("<script>history.replaceState({},'','$url');</script>");
     }
 }
