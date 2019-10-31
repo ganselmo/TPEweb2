@@ -10,11 +10,6 @@ class ArtistaView extends View{
         $this->smarty->display('templates/allArtistas.tpl');
     }
 
-    public function showOne($artista){
-
-        $this->smarty->assign('artista',$artista);
-        $this->smarty->display('templates/Artista.tpl');
-    }
     public function create()
     {
         $this->smarty->display('templates/ArtistaCreate.tpl');

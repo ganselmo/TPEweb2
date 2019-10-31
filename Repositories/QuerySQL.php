@@ -50,11 +50,4 @@ class QuerySQL
         $sql = 'SELECT * FROM '. $tabla . ' WHERE id = ?';
         return $sql;
     }
-
-    public function selectByColumn($tabla,$column,$parameter) {
-        $query = $this->db->prepare('SELECT * FROM '. $tabla . ' WHERE ' . $column . ' = ?');
-        $query->execute(array($parameter));
-        $obj = $query->fetchAll(PDO::FETCH_OBJ); 
-        return $obj;
-    }
 }

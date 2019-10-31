@@ -15,12 +15,6 @@
 
         },
         {
-            "url": "Artistas/Get/[id]",
-            "httpMethod": "GET",
-            "controller": "ArtistaController",
-            "controllerMethod": "show"
-        },
-        {
             "url": "Artistas/Create",
             "httpMethod": "GET",
             "controller": "ArtistaController",
@@ -62,19 +56,20 @@
             ]
         },
         {
-            "url": "User/Login",
-            "httpMethod": "GET",
-            "controller": "UserController",
-            "controllerMethod": "LoginView"
-           
-        },
-        {
             "url": "User/Logout",
             "httpMethod": "GET",
             "controller": "UserController",
             "controllerMethod": "logOut"
            
         },
+        {
+            "url": "User/Login",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "LoginView"
+           
+        },
+       
         {
             "url": "User/Login",
             "httpMethod": "POST",
