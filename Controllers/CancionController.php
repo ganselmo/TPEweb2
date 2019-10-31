@@ -17,7 +17,7 @@ class CancionController extends Controller{
         header("Location: " . BASE_CANCION);
     }
 
-    public function delete() {
+    public function deleter() {
         if(isset($_POST) && isset($_POST['id'])) {
             $this->model->delete($_POST['id']);
         }
@@ -41,5 +41,45 @@ class CancionController extends Controller{
     public function findByColumn($column,$parameter) {
         $obj = $this->model->findByColumn($column,$parameter);
         var_dump($obj);die;
+    }
+
+
+    public function index()
+    {
+        $canciones = $this->model->get();
+
+        $this->view->showIndex($canciones);
+    }
+
+    public function show($id)
+    {
+        $cancion = $this->model->findById($id[]);
+
+        $this->view->showOne($cancion);
+    }
+    public function edit($id)
+
+    {
+
+        $cancion = $this->model->findById($id);
+
+        $this->view->edit($cancion);
+    }
+    public function save($data)
+    {
+        $this->model->create($data);
+        $this->index();
+    }
+
+    public function insert($data)
+    {
+        $this->model->insert($data);
+        $this->index();
+    }
+
+    public function delete($id)
+    {
+        $this->model->delete($id);
+        $this->index();
     }
 }
