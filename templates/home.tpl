@@ -6,7 +6,7 @@
     <button type="button" id= "AC" class="btn btn-secondary btn-lg btn-block">Canciones por artista</button>
     
 </div>
-    {$session->session()}
+  
 
 <script src="./Repositories/Scripts/menu.js"></script>
 {include file="footer.tpl"}

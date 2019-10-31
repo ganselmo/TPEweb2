@@ -9,7 +9,9 @@
             <th>Apellido</th>
             <th>Fecha de nacimiento</th>
             <th>Ranking</th>
+            {if $session->isLoggedIn()}
             <th>Accion</th>
+            {/if}
 
         </tr>
     </thead>
@@ -20,6 +22,7 @@
             <td>{$artista->apellido}</td>
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
+            {if $session->isLoggedIn()}
             <td>
             <div class="container">
                 <div class="row">
@@ -40,11 +43,20 @@
                 </div>
             </div
             </td>
+
+            {/if}
       
         </tr>
         {/foreach}
     </tbody>
     </table>
 </div>
-
+<div class = "row">
+{if $session->isLoggedIn()}
+             
+                        <form action="Artistas/Create" method="GET">
+                            <button class= "btn btn-info btn-md" type="submit">Nuevo</button>
+                        </form>
+ {/if}
+</div>
 {include file="footer.tpl"}
