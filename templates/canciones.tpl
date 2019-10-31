@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header copy.tpl"}
     <table>
     <thead>
         <tr>
@@ -23,4 +23,4 @@
         {/foreach}
     </tbody>
     </table>
-{include file="footer.tpl"}
+{include file="footer copy.tpl"}

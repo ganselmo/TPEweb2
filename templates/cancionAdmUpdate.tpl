@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header copy.tpl"}
     <table>
     <thead>
         <tr>
@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <tr>
-        <form action="cancion/update" method="post">
+        <form action="API/cancion/update" method="post">
             <td><input type="text" name="nombre" value="{$cancion->nombre}"></td>
             <td><input type="number" name="duracion" value="{$cancion->duracion}"></td>
             <td><input type="text" name="genero" value="{$cancion->genero}"></td>
@@ -26,4 +26,4 @@
         </tr>
     </tbody>
     </table>
-{include file="footer.tpl"}
+{include file="footer copy.tpl"}

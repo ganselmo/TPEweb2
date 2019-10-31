@@ -1,17 +1,20 @@
 <?php
-require_once 'Controllers\CancionController.php';
-require_once 'Controllers\ArtistaController.php';
+require_once 'API\ApiControllers\CancionApiController.php';
+require_once 'API\ApiControllers\ArtistaApiController.php';
+require_once 'API\ApiControllers\HomeApiController.php';
 
 $action = $_GET["action"];
 define("BASE", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-define("BASE_CANCION", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/cancion');
+define("BASE_CANCION", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/API/cancion');
+define("BASE_ARTISTA", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/API/Artistas');
 
 if($action == ''){
-    echo "Página en contrucción";
+    $homeController = new HomeApiController();
+    $homeController->index();
 }else{
     $partesURL = explode("/", $action);
     if($partesURL[0] == "cancion") {
-        $cancionController = new CancionController();
+        $cancionController = new CancionApiController();
         if((count($partesURL) > 1) && ($partesURL[1] != "")) {
             if($partesURL[1] == "create") {
                 $cancionController->create();
@@ -27,18 +30,18 @@ if($action == ''){
         } else {
             $cancionController->get();
         }
-    } elseif ($partesURL[0] == "artista") {
-        $artistaController = new ArtistaController();
+    } elseif ($partesURL[0] == "Artistas") {
+        $artistaController = new ArtistaApiController();
         if((count($partesURL) > 1) && ($partesURL[1] != "")) {
             if($partesURL[1] == "create") {
                 $artistaController->add();
             } elseif($partesURL[1] == "delete") {
                 $artistaController->delete();
-            } elseif($partesURL[1] == "update") {
+            } elseif($partesURL[1] == "Edit") {
                 $artistaController->update();
             }
         } else {
-            $artistaController->get();
+            $artistaController->index();
         }
     }
 }

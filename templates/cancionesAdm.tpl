@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header copy.tpl"}
     <table>
     <thead>
         <tr>
@@ -21,11 +21,11 @@
             <td>{$cancion->id_artista}</td>
             <td>{$cancion->ranking}</td>
             <td>
-                <form action="cancion/delete" method="post">
+                <form action="API/cancion/delete" method="post">
                     <input type="hidden" name="id" value="{$cancion->id}">
                     <button type="submit">Delete</button>
                 </form>
-                <form action="cancion/update" method="get">
+                <form action="API/cancion/update" method="post">
                     <input type="hidden" name="id" value="{$cancion->id}">
                     <button type="submit">Modificar</button>
                 </form>
@@ -33,7 +33,7 @@
         </tr>
         {/foreach}
         <tr>
-        <form action="cancion/create" method="post">
+        <form action="API/cancion/create" method="post">
             <td><input type="text" name="nombre" placeholder="Cancion"></td>
             <td><input type="number" name="duracion" placeholder="Duración"></td>
             <td><input type="text" name="genero" placeholder="Género"></td>
@@ -45,4 +45,4 @@
         </tr>
     </tbody>
     </table>
-{include file="footer.tpl"}
+{include file="footer copy.tpl"}

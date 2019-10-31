@@ -5,7 +5,8 @@
 
     RewriteRule \.(?:css|js|jpe?g|gif|png)$ - [L]
 
+    RewriteRule ^API/(.*)$ route.php?action=$1 [QSA,L,END]
     RewriteRule ^(.*)$ routev2.php?action=$1 [QSA,L]
-    
 
+    
 </IfModule>

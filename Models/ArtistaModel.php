@@ -6,7 +6,7 @@ class ArtistaModel extends Modelo
     public function __construct () {
         $this->db = Database::getInstance()->getConnection();
         $this->query = new QuerySQL();
-        $this->tabla = 'artista';
+        $this->tabla = 'artistas';
     }
 
     public function create($values) {
