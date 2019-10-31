@@ -30,6 +30,15 @@
             </td>
         </tr>
         {/foreach}
+        <tr>
+        <form action="API/Artistas/create" method="post">
+            <td><input type="text" name="nombre" placeholder="Nombre"></td>
+            <td><input type="text" name="apellido" placeholder="Apellido"></td>
+            <td><input type="date" name="fechanac"></td>
+            <td><input type="number" name="ranking" placeholder="Ranking"></td>
+            <td><input type="submit" value="Agregar"></td>
+        </form>
+        </tr>
     </tbody>
     </table>
 </div>

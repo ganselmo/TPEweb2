@@ -64,7 +64,7 @@ class UserApiController extends ApiController
             die();
         }
 
-        if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 20)) { 
+        if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 20000)) { 
             $this->logout();
             die();
         } 

@@ -27,20 +27,12 @@ class ArtistaApiController extends ApiController {
         $this->view->showOne($artista);
     }
 
-    
-
-    public function add() {
+    public function create() {
         $this->checkLogIn();
-        if(isset($_GET) && isset($_GET['name']) && isset($_GET['players'])) {
-            if(isset($_GET['cards']) == "on") {
-                $cartas = 1;
-            } else {
-                $cartas = 0;
-            }
-            $juego = array($_GET['name'], $_GET['players'], $cartas);
-            $this->model->addJuego($juego);
-            header("Location: " . BASE_ARTISTA);
+        if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['fechanac']) && isset($_POST['ranking'])) {
+            $this->model->create(array($_POST['nombre'], $_POST['apellido'], $_POST['fechanac'], $_POST['ranking']));
         }
+        header("Location: " . BASE_ARTISTA);
     }
 
     public function delete() {

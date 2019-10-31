@@ -36,7 +36,7 @@ if($action == ''){
         $artistaController = new ArtistaApiController();
         if((count($partesURL) > 1) && ($partesURL[1] != "")) {
             if($partesURL[1] == "create") {
-                $artistaController->add();
+                $artistaController->create();
             } elseif($partesURL[1] == "delete") {
                 $artistaController->delete();
             } elseif($partesURL[1] == "Edit") {
