@@ -1,23 +1,27 @@
 <?php
-require_once('libs/Smarty.class.php');
+require_once("ApiView.php");
 
-class CancionApiView {
+class CancionApiView extends ApiView {
     function __construct(){
+        parent::__construct();
     }
 
     public function display($canciones){
-        $smarty = new Smarty();
-        $smarty->assign('titulo',"Canciones");
-        $smarty->assign('BASE',BASE);
-        $smarty->assign('canciones',$canciones);
-        $smarty->display('templates/cancionesAdm.tpl');
+        $this->smarty->assign('titulo',"Canciones");
+        $this->smarty->assign('canciones',$canciones);
+        $this->smarty->display('templates/cancionesAdm.tpl');
     }
 
     public function displayUpdate($cancion){
-        $smarty = new Smarty();
-        $smarty->assign('titulo',"Canción a modificar");
-        $smarty->assign('cancion',$cancion);
-        $smarty->assign('BASE',BASE);
-        $smarty->display('templates/cancionAdmUpdate.tpl');
+        $this->smarty->assign('titulo',"Canción a modificar");
+        $this->smarty->assign('cancion',$cancion);
+        $this->smarty->assign('BASE',BASE);
+        $this->smarty->display('templates/cancionAdmUpdate.tpl');
+    }
+
+    public function displayVisitante($canciones){
+        $this->smarty->assign('titulo',"Canciones");
+        $this->smarty->assign('canciones',$canciones);
+        $this->smarty->display('templates/canciones.tpl');
     }
 }

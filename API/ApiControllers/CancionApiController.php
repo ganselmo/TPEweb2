@@ -8,9 +8,11 @@ class CancionApiController extends ApiController{
     function __construct() {
         $this->model = new CancionModel();
         $this->view = new CancionApiView();
+        $this->session = new UserApiController();
     }
 
     public function create() {
+        $this->checkLogIn();
         if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
             $this->model->create(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']));
         }
@@ -18,6 +20,7 @@ class CancionApiController extends ApiController{
     }
 
     public function delete() {
+        $this->checkLogIn();
         if(isset($_POST) && isset($_POST['id'])) {
             $this->model->delete($_POST['id']);
         }
@@ -25,6 +28,7 @@ class CancionApiController extends ApiController{
     }
 
     public function update() {
+        $this->checkLogIn();
         if(isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
             $this->model->update(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking'], $_POST['id']));
             header("Location: " . BASE_CANCION);
@@ -35,11 +39,17 @@ class CancionApiController extends ApiController{
     }
 
     private function findById($id) {
+        $this->checkLogIn();
         return $this->model->getByID($id);
     }
 
     public function findByColumn($column,$parameter) {
+        $this->checkLogIn();
         $obj = $this->model->findByColumn($column,$parameter);
         var_dump($obj);die;
+    }
+
+    public function checkLogin() {
+        $this->session->checkLogin();
     }
 }

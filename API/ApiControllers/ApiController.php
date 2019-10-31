@@ -1,23 +1,22 @@
 <?php
-require_once '.\Repositories\Session.php';
+require_once("API/Session.php");
 
-class ApiController 
+abstract class ApiController 
 {
     protected $model;
     protected $view;
     protected $session;
-   
-    public function __construct(Session $session)
-    {
-        $this->session = $session;
-    }
 
-    /*public abstract function delete();*/
-
-    /* public abstract function update(); */
+    public abstract function checkLogin();
 
     public function get(){
+        $this->checkLogin();
         $query = $this->model->get();
         $this->view->display($query);
+    }
+
+    public function getVisitante() {
+        $query = $this->model->get();
+        $this->view->displayVisitante($query);
     }
 }

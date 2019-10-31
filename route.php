@@ -2,15 +2,17 @@
 require_once 'API\ApiControllers\CancionApiController.php';
 require_once 'API\ApiControllers\ArtistaApiController.php';
 require_once 'API\ApiControllers\HomeApiController.php';
+require_once 'API\ApiControllers\UserApiController.php';
 
 $action = $_GET["action"];
 define("BASE", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 define("BASE_CANCION", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/API/cancion');
 define("BASE_ARTISTA", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/API/Artistas');
+define("BASE_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/API/User/Login');
 
 if($action == ''){
-    $homeController = new HomeApiController();
-    $homeController->index();
+    $inivitadoController = new HomeApiController();
+    $inivitadoController->getMenu();
 }else{
     $partesURL = explode("/", $action);
     if($partesURL[0] == "cancion") {
@@ -42,6 +44,35 @@ if($action == ''){
             }
         } else {
             $artistaController->index();
+        }
+    } elseif ($partesURL[0] == "User") {
+        $userController = new UserApiController();
+        if((count($partesURL) > 1) && ($partesURL[1] != "")) {
+            if($partesURL[1] == "Register") {
+                $userController->registracion();
+            } elseif($partesURL[1] == "Login") {
+                $userController->login();
+            } elseif($partesURL[1] == "Logout") {
+                $userController->logout();
+            }
+        } else {
+            $userController->goHome();
+        }
+    } elseif ($partesURL[0] == "administrador") {
+        $homeController = new HomeApiController();
+        $homeController->index();
+    } elseif ($partesURL[0] == "visitante") {
+        if((count($partesURL) > 1) && ($partesURL[1] != "")) {
+            if($partesURL[1] == "cancion") {
+                $cancionController = new CancionApiController();
+                $cancionController->getVisitante();
+            } elseif($partesURL[1] == "Artistas") {
+                $artistaController = new ArtistaApiController();
+                $artistaController->getVisitante();
+            } 
+        } else {
+            $inivitadoController = new HomeApiController();
+            $inivitadoController->getMenu();
         }
     }
 }

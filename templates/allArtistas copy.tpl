@@ -1,5 +1,4 @@
-{include file="header.tpl"}
-
+{include file="header copy.tpl"}
 
 <div class = "row">
     <table class="table table-hover">
@@ -7,10 +6,9 @@
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Fecha de nacimiento</th>
+            <th>Nacimiento</th>
             <th>Ranking</th>
             <th>Accion</th>
-
         </tr>
     </thead>
     <tbody>
@@ -21,31 +19,19 @@
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
             <td>
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-sm-4">
-                        <form action="API/Artistas/Edit" method="POST">
-                            <input type="hidden" name="id" value="{$artista->id}">
-                            <button class= "btn btn-warning btn-md" type="submit">Modificar</button>
-                        </form>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <form action="API/Artistas/Delete" method="POST">
-                            <input type="hidden" name="id" value="{$artista->id}">
-                            <button class= "btn btn-danger btn-md" type="submit">Borrar</button>
-                        </form>
-                    </div>
-                
-                </div>
-            </div
+                <form action="API/Artistas/Edit" method="POST">
+                    <input type="hidden" name="id" value="{$artista->id}">
+                    <button class= "btn btn-warning btn-md" type="submit">Modificar</button>
+                </form>
+                <form action="API/Artistas/Delete" method="POST">
+                    <input type="hidden" name="id" value="{$artista->id}">
+                    <button class= "btn btn-danger btn-md" type="submit">Borrar</button>
+                </form>
             </td>
-      
         </tr>
         {/foreach}
     </tbody>
     </table>
 </div>
 
-{include file="footer.tpl"}
+{include file="footer copy.tpl"}
