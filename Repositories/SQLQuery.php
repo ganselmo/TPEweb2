@@ -8,6 +8,11 @@ class SQLQuery
     {
         $this->db = new PDO('mysql:host=localhost;dbname=db_cancionero;charset=utf8', 'root', '');
     }
+
+    function db()
+    {
+        return $this->db;
+    }
     function all($tabla)
     {
         $query = ($this->db->prepare('SELECT * FROM '. $tabla)); 
@@ -30,6 +35,13 @@ class SQLQuery
         $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column.' = ?')); 
         $query->execute(array($parameter));
         $obj = $query->fetchAll(PDO::FETCH_OBJ); 
+        return $obj;
+    }
+    function findFirstByColumn($tabla,$column,$parameter)
+    {
+        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column.' = ?')); 
+        $query->execute(array($parameter));
+        $obj = $query->fetch(PDO::FETCH_OBJ); 
         return $obj;
     }
 

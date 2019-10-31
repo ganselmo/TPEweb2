@@ -17,8 +17,9 @@ class Route
         $this->controller = $controller;
         $this->controllerMethod = $controllerMethod;
         
-        if($parameters){
-            $this->parameters = $parameters;
+        if(!$parameters){
+            if($this->httpMethod == "POST")
+            $this->parameters = $_POST;
         }
     }
   

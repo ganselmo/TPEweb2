@@ -23,6 +23,12 @@ class ArtistaController extends Controller {
 
         $this->view->showOne($artista);
     }
+    public function edit($id)
+    {
+        $artista = $this->model->findById($id);
+
+        $this->view->edit($artista);
+    }
 
     
 

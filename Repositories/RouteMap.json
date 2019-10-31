@@ -63,6 +63,13 @@
            
         },
         {
+            "url": "User/Logout",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "logOut"
+           
+        },
+        {
             "url": "User/Login",
             "httpMethod": "POST",
             "controller": "UserController",

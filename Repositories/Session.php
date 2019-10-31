@@ -1,37 +1,50 @@
 <?php
 
-class Session {
-    public function __construct() {}
+class Session
+{
+    public function __construct()
+    { }
 
-    public function login($user) {
-        session_start();
+    public function login($user)
+    {
+        $this->checkSession();
         $_SESSION['ID_USER'] = $user->id;
-        $_SESSION['USERNAME'] = $user->username;
+        $_SESSION['USER'] = $user->user;
     }
 
-    public function logout() {
-        session_start();
+    public function logOut()
+    {
+        $this->checkSession();
+        session_unset();
         session_destroy();
     }
 
-    public function checkLoggedIn() {
-        session_start();
-        if (!isset($_SESSION['ID_USER'])) {
-            header('Location: ' . LOGIN);
-            die();
-        }       
-    }
     public function isLoggedIn()
     {
-        if(isset($_SESSION['ID_USER']))
+
+        $this->checkSession();
+        if (isset( $_SESSION['USER'])) {
             return true;
-        else
+        } else {
             return false;
+        }
+    }
+    public function session()
+    {
+
+        echo session_id();
+    }
+    public function getLoggedUserName()
+    {
+        $this->checkSession();
+        return $_SESSION['USER'];
     }
 
-    public function getLoggedUserName() {
-        if (session_status() != PHP_SESSION_ACTIVE)
+    public function checkSession()
+    {
+        if (!isset($_SESSION)) {
             session_start();
-        return $_SESSION['USERNAME'];
+        }
+
     }
 }

@@ -4,11 +4,12 @@ require_once("Repositories/SQLQuery.php");
 class Model {
 
     private $idName = 'id';
-    private $sqlQuery;
+    protected $sqlQuery;
     function __construct()
     {
         $this->sqlQuery = new SQLQuery();
     }
+
 
     function all()
     {
