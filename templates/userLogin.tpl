@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
 
-<form action="/User/Login" method="POST">
+<form action="{BASE}User/Login" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">

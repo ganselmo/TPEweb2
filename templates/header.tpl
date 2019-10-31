@@ -18,16 +18,16 @@
          <span class="navbar-brand">{$session->getLoggedUserName()}</span>
    
    
-        <a class="navbar-brand" href="/User/Logout">Log out</a>
+        <a class="navbar-brand" href="{BASE}User/Logout">Log out</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
     {else}
-        <a class="navbar-brand" href="/User/Login">Login</a>
+        <a class="navbar-brand" href="{BASE}User/Login">Login</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/User/Register">Register</a>
+        <a class="navbar-brand" href="{BASE}User/Register">Register</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
