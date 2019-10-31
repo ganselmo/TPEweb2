@@ -61,7 +61,7 @@ class Router
                 if ($jsonRoute->getHttpMethod() == $this->httpMethod) {
 
 
-                    $matches = 0;
+
                     $UrlArray = explode("/", $jsonRoute->getURL());
 
 
@@ -71,23 +71,28 @@ class Router
 
                         $contador = 0;
                         foreach ($this->url as $key => $actualURL) {
-                            // echo $contador." ".$UrlArray[$key];
-                            // echo "<br>";
-                            // echo $contador." ".$this->url[$key];
-                            // echo "<hr>";
                      
              
                             if ($actualURL == $UrlArray[$key]) {
+
                                 $contador++;
+     
+                                
                             }
 
-                            elseif(count(explode("[",$jsonRoute->getURL()))>1)
+                            else
+                
+                            if(count(explode("[",$UrlArray[$key]))>1)
                             {
+                                
+
                                 $parameter = trim(explode("[",$jsonRoute->getURL())[1],']');
                                 $value = $this->url[$key];
                                 $parameters = [$parameter=>$value];
+
                                 $contador++;
                             }
+
 
                         }
                         
@@ -96,9 +101,10 @@ class Router
 
                             if(isset($parameters))
                             {
-
+                              
                                 $route = new Route($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
                                 $jsonRoute->getControllerMethod(),  $parameters[$parameter] );
+
                                 $route->direct();
                                
                             }

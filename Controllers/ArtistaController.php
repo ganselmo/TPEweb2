@@ -19,15 +19,21 @@ class ArtistaController extends Controller {
 
     public function show($id)
     {
-        $artista = $this->model->findById($id);
+        $artista = $this->model->findById($id[]);
 
         $this->view->showOne($artista);
     }
     public function edit($id)
+
     {
+
         $artista = $this->model->findById($id);
 
         $this->view->edit($artista);
+    }
+    public function create()
+    {
+        $this->view->create();
     }
 
     

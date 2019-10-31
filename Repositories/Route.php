@@ -10,16 +10,22 @@ class Route
     private $controller;
     private $parameters= [];
 
-    function __construct($url,$httpMethod,$controller,$controllerMethod,$parameters)
+    function __construct($url,$httpMethod,$controller,$controllerMethod,$parametersa)
     {
+        
+        
         $this->url = $url;
         $this->httpMethod = $httpMethod;
         $this->controller = $controller;
         $this->controllerMethod = $controllerMethod;
+
         
-        if(!$parameters){
+        if(!$parametersa){
             if($this->httpMethod == "POST")
             $this->parameters = $_POST;
+        }
+        else{
+            $this->parameters=$parametersa;
         }
     }
   
@@ -29,7 +35,9 @@ class Route
 
         $controller=new $this->controller;
         $method  =$this->controllerMethod;
+        
         $params = $this->parameters;
+        
         if(isset($params))
         $controller->$method($params); 
         else
@@ -55,10 +63,6 @@ class Route
         return $this->httpMethod;
     }
 
-    public function matches($route)
-    {
-        
-    }
 
     public function getController()
     {
