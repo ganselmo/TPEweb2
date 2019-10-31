@@ -10,8 +10,7 @@ class UserView extends View{
 
     }
     public function registerView(){
-        set_url();
-
+        
         
         $this->smarty->display('templates/userRegister.tpl');
     }
