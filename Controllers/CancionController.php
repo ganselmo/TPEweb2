@@ -1,6 +1,7 @@
 <?php
 require_once 'Controller.php';
 require_once '.\Models\CancionModel.php';
+require_once '.\Models\Artista.php';
 require_once '.\Views\CancionView.php';
 
 class CancionController extends Controller
@@ -9,23 +10,8 @@ class CancionController extends Controller
     function __construct()
     {
         $this->model = new CancionModel();
+        $this->modelArt = new Artista();
         $this->view = new CancionView();
-    }
-
-    public function create()
-    {
-        if (isset($_POST) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
-            $this->model->create(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']));
-        }
-        header("Location: " . BASE_CANCION);
-    }
-
-    public function deleter()
-    {
-        if (isset($_POST) && isset($_POST['id'])) {
-            $this->model->delete($_POST['id']);
-        }
-        header("Location: " . BASE_CANCION);
     }
 
     public function update()
@@ -79,8 +65,22 @@ class CancionController extends Controller
     public function save($data)
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $this->model->create($data);
+            $values = [];
+            foreach ($data as $key => $value) {
+                array_push($values, $key);
+            }
+            $this->model->update($values);
             $this->index();
+        } else {
+            Route::directDefault();
+        }
+    }
+
+    public function create()
+    {
+        if ($this->view->returnSession()->isLoggedIn()) {
+            $artistas = $this->modelArt->all();
+            $this->view->create($artistas);
         } else {
             Route::directDefault();
         }
@@ -89,7 +89,11 @@ class CancionController extends Controller
     public function insert($data)
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $this->model->insert($data);
+            $values = [];
+            foreach ($data as $key => $value) {
+                array_push($values, $value);
+            }
+            $this->model->create($values);
             $this->index();
         } else {
             Route::directDefault();
@@ -99,7 +103,7 @@ class CancionController extends Controller
     public function delete($id)
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $this->model->delete($id);
+            $this->model->delete($id['id']);
             $this->index();
         } else {
             Route::directDefault();
