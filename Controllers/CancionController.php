@@ -67,7 +67,11 @@ class CancionController extends Controller{
     }
     public function save($data)
     {
-        $this->model->create($data);
+        $values = [];
+        foreach ($data as $key => $value) {
+            array_push($values, $key);
+        }
+        $this->model->update($values);
         $this->index();
     }
 
@@ -79,7 +83,7 @@ class CancionController extends Controller{
 
     public function delete($id)
     {
-        $this->model->delete($id);
+        $this->model->delete($id['id']);
         $this->index();
     }
 }

@@ -10,8 +10,8 @@
     <input type="text" class="form-control" name="genero" value="{$cancion->genero}">
     <label for="album">Álbum</label>
     <input type="text" class="form-control" name="album" value="{$cancion->album}">
-    <label for="artista">Artista</label>
-    <input type="text" class="form-control" name="artista" value="{$cancion->id_artista}">
+    <label for="id_artista">Artista</label>
+    <input type="text" class="form-control" name="id_artista" value="{$cancion->id_artista}">
     <label for="ranking">Ranking</label>
     <input type="text" class="form-control" name="ranking" value="{$cancion->ranking}">
     <input type="hidden" name="id" value="{$cancion->id}">
