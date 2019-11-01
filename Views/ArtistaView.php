@@ -19,6 +19,7 @@ class ArtistaView extends View{
         $this->smarty->assign('artista',$artista);
         $this->smarty->display('templates/ArtistaEdit.tpl');
     }
+    
 
 
 

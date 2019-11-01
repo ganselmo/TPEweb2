@@ -17,23 +17,20 @@ class ArtistaController extends Controller {
         $this->view->showIndex($artistas);
     }
 
-    public function show($id)
+    public function create()
     {
-        $artista = $this->model->findById($id[]);
-
-        $this->view->showOne($artista);
+        $this->view->create();
     }
     public function edit($id)
 
     {
-
         $artista = $this->model->findById($id);
 
         $this->view->edit($artista);
     }
     public function save($data)
     {
-        $this->model->create($data);
+        $this->model->update($data);
         $this->index();
     }
 
@@ -45,7 +42,7 @@ class ArtistaController extends Controller {
 
     public function delete($id)
     {
-        $this->model->delete($id);
+        $this->model->delete($id['id']);
         $this->index();
     }
 

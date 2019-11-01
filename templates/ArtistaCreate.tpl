@@ -1,7 +1,8 @@
 {include file="header.tpl"}
 
-<form action="/Artista/New" method="POST">
+<form action="{BASE}Artistas/New" method="POST">
   <div class="form-group">
+  
     <label for="nombre">Nombre</label>
     <input type="text" class="form-control" name="nombre">
     <label for="apellido">Apellido</label>

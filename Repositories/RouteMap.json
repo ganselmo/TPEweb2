@@ -55,7 +55,7 @@
                 "id"
             ]
         },
-        {
+         {
             "url": "User/Logout",
             "httpMethod": "GET",
             "controller": "UserController",

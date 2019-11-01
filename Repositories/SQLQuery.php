@@ -45,12 +45,13 @@ class SQLQuery
         return $obj;
     }
 
-    function save($table,$data)
+    function maxNumber($tabla,$column)
     {
-        $query = $this->db->prepare('INSERT INTO ? VALUES ?'); 
-        $query;
+        
+        $query = ($this->db->prepare("SELECT MAX(".$column.") FROM" .$tabla));
         $query->execute();
-
+        $obj = $query->fetch(PDO::FETCH_OBJ); 
+        return $obj[$column];
     }
     
 }

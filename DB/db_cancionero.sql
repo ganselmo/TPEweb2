@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2019 a las 16:32:28
+-- Tiempo de generación: 01-11-2019 a las 01:00:27
 -- Versión del servidor: 10.1.31-MariaDB
 -- Versión de PHP: 7.2.3
 
@@ -55,29 +55,25 @@ CREATE TABLE `canciones` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cancion_lista`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `cancion_lista` (
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
-  `id_cancion` int(11) NOT NULL,
-  `id_lista` int(11) NOT NULL
+  `user` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `listas`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-CREATE TABLE `listas` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `reproducciones` int(11) NOT NULL,
-  `id_creador` int(11) NOT NULL,
-  `valoracion` int(11) NOT NULL,
-  `ranking` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `usuarios` (`id`, `user`, `password`) VALUES
+(6, 'gero@gmail.com', '$2y$10$Fqm.0chtdZ.kKNduJxmKRulE4AETJYg4dKQ0n5P2GjD85H11voJF6'),
+(7, 'javi@gmail.com', '$2y$10$xyWvVWv/EOd0hCyvqWtJouSy1eoirycSEEXkGdMpQME1RaE4vuaAW'),
+(8, 'javi@gmail.com', '$2y$10$TabFb/GdTn/NaF4DF4wMNuHsdvoMCOOoKt4mimcWpu.5ENdPhHm0S'),
+(9, 'gero_123@gmail.com', '$2y$10$HWz6EQ6H0sUSzDJ0BQ5Wge5qsuj9u/fyBezhjF8iX3g6dwYFshrRa'),
+(10, 'gero_123@gmail.com', '$2y$10$eq3ALvoCYsObe9i8sAWCOOnGRgoVZtdQZRh8Ns3vcS0e0.EyckvEa');
 
 --
 -- Índices para tablas volcadas
@@ -97,17 +93,9 @@ ALTER TABLE `canciones`
   ADD KEY `id_artista` (`id_artista`);
 
 --
--- Indices de la tabla `cancion_lista`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `cancion_lista`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_cancion` (`id_cancion`),
-  ADD KEY `id_lista` (`id_lista`);
-
---
--- Indices de la tabla `listas`
---
-ALTER TABLE `listas`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -118,25 +106,19 @@ ALTER TABLE `listas`
 -- AUTO_INCREMENT de la tabla `artistas`
 --
 ALTER TABLE `artistas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `canciones`
 --
 ALTER TABLE `canciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `cancion_lista`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `cancion_lista`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `listas`
---
-ALTER TABLE `listas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
@@ -146,14 +128,7 @@ ALTER TABLE `listas`
 -- Filtros para la tabla `canciones`
 --
 ALTER TABLE `canciones`
-  ADD CONSTRAINT `canciones_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artistas` (`id`);
-
---
--- Filtros para la tabla `cancion_lista`
---
-ALTER TABLE `cancion_lista`
-  ADD CONSTRAINT `cancion_lista_ibfk_1` FOREIGN KEY (`id_cancion`) REFERENCES `canciones` (`id`),
-  ADD CONSTRAINT `cancion_lista_ibfk_2` FOREIGN KEY (`id_lista`) REFERENCES `listas` (`id`);
+  ADD CONSTRAINT `canciones_ibfk_1` FOREIGN KEY (`id_artista`) REFERENCES `artistas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

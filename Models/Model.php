@@ -33,6 +33,11 @@ class Model {
         return $this->sqlQuery->findByColumn($this->tabla,$column,$parameter);
     }
 
+    function nextNumber()
+    {
+        return $this->sqlQuery->maxNumber($this->tabla,$this->idName);
+    }
+
 
 
 
