@@ -12,9 +12,6 @@ class Controller
         $this->session = $session;
     }
 
-    /*public abstract function delete();*/
-
-    /* public abstract function update(); */
 
     public function get(){
         $query = $this->model->get();
