@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<form action="Canciones/Patch" method="POST">
+<form action="{BASE}Canciones/Patch" method="POST">
   <div class="form-group">
     <label for="nombre">Nombre</label>
     <input type="text" class="form-control" name="nombre" value="{$cancion->nombre}">
