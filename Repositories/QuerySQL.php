@@ -58,4 +58,10 @@ class QuerySQL
         return $sql;
     }
 
+    public function findFirstByColumn($tabla,$column)
+    {
+        $sql = 'SELECT * FROM '. $tabla . ' WHERE '.$column.' = ?';
+        return $sql;
+    }
+
 }

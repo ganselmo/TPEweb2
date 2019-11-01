@@ -5,18 +5,20 @@ require_once("DB/Database.php");
 
 class User 
 {
-    protected $tabla = "usuarios";
+    protected $tabla;
     protected $db;
     protected $query;
     function __construct()
     {
-        
+        $this->db = Database::getInstance()->getConnection();
+        $this->query = new QuerySQL();
+        $this->tabla = "usuarios";
     }
     public function register($userName,$pass)
     {
 
 
-        $query = $this->query->db()->prepare('INSERT INTO usuarios (user,password) values (?,?)');
+        $query = $this->db->prepare('INSERT INTO usuarios (user,password) values (?,?)');
         $query->execute(array($userName, password_hash($pass, PASSWORD_BCRYPT)));
     }
 
@@ -28,7 +30,10 @@ class User
     }
     private function getByUsername($userName)
     {
-        return $this->query->findFirstByColumn($this->tabla, "user", $userName);
+        $query = $this->db->prepare($this->query->findfirstByColumn($this->tabla, 'user')); 
+        $query->execute(array($userName));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 
     public function verifyUser($userName,$password) {
