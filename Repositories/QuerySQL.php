@@ -50,4 +50,5 @@ class QuerySQL
         $sql = 'SELECT * FROM '. $tabla . ' WHERE id = ?';
         return $sql;
     }
+    
 }

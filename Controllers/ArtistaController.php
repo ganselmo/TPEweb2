@@ -1,6 +1,6 @@
 <?php
 require_once 'Controller.php';
-require_once '.\Models\Artista.php';
+require_once '.\Models\ArtistaModel.php';
 require_once '.\Views\ArtistaView.php';
 
 class ArtistaController extends Controller
@@ -8,13 +8,13 @@ class ArtistaController extends Controller
 
     function __construct()
     {
-        $this->model = new Artista();
+        $this->model = new ArtistaModel();
         $this->view = new ArtistaView();
     }
 
     public function index()
     {
-        $artistas = $this->model->all();
+        $artistas = $this->model->get();
 
         $this->view->showIndex($artistas);
     }
@@ -40,9 +40,9 @@ class ArtistaController extends Controller
 
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-
-            $artista = $this->model->findById($id);
-
+            
+            $artista = $this->model->getByID($id);
+           
             $this->view->edit($artista);
         } else {
             Route::directDefault();
@@ -61,7 +61,7 @@ class ArtistaController extends Controller
     public function insert($data)
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $this->model->insert($data);
+            $this->model->create($data);
             $this->index();
         } else {
             Route::directDefault();

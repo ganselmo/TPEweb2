@@ -6,16 +6,20 @@ class ArtistaModel extends Modelo
     public function __construct () {
         $this->db = Database::getInstance()->getConnection();
         $this->query = new QuerySQL();
-        $this->tabla = 'artista';
+        $this->tabla = "artistas";
     }
 
     public function create($values) {
         $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('nombre','apellido','fechanac','ranking')));
-        $sentencia->execute($values);
+
+        $sentencia->execute(array($values['nombre'],$values['apellido'],$values['fechanac'],$values['ranking']));
     }
 
     public function update($values) {
         $sentencia = $this->db->prepare($this->query->update($this->tabla, array('nombre','apellido','fechanac','ranking')));
-        $sentencia->execute($values);
+        $sentencia->execute(array($values['nombre'],$values['apellido'],$values['fechanac'],$values['ranking'],$values['id']));
+    
     }
+
+    
 }
