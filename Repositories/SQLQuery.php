@@ -1,6 +1,6 @@
 <?php
 
-class SQLQuery
+class SQLQuerys
 {
 
     private $db;

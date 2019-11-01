@@ -32,7 +32,7 @@ class ArtistaController extends Controller
     public function show($id)
     {
 
-        $artista = $this->model->findById($id);
+        $artista = $this->model->getByID($id);
 
         $this->view->showOne($artista);
     }
