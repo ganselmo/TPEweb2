@@ -1,8 +1,13 @@
 <?php
+require_once("Repositories/QuerySQL.php");
+require_once("DB/Database.php");
+
+
 class User 
 {
     protected $tabla = "usuarios";
-    protected $query = "";
+    protected $db;
+    protected $query;
     function __construct()
     {
         
