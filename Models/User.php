@@ -1,15 +1,17 @@
 <?php
-require_once("Models/Model.php");
-class User extends Model
+class User 
 {
-    protected $tabla = 'usuarios';
-
-
+    protected $tabla = "usuarios";
+    protected $query = "";
+    function __construct()
+    {
+        
+    }
     public function register($userName,$pass)
     {
 
 
-        $query = $this->sqlQuery->db()->prepare('INSERT INTO usuarios (user,password) values (?,?)');
+        $query = $this->query->db()->prepare('INSERT INTO usuarios (user,password) values (?,?)');
         $query->execute(array($userName, password_hash($pass, PASSWORD_BCRYPT)));
     }
 
@@ -21,7 +23,7 @@ class User extends Model
     }
     private function getByUsername($userName)
     {
-        return $this->sqlQuery->findFirstByColumn($this->tabla, "user", $userName);
+        return $this->query->findFirstByColumn($this->tabla, "user", $userName);
     }
 
     public function verifyUser($userName,$password) {
