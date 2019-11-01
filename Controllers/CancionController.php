@@ -66,7 +66,7 @@ class CancionController extends Controller
     public function create()
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $artistas = $this->modelArt->all();
+            $artistas = $this->modelArt->get();
             $this->view->create($artistas);
         } else {
             Route::directDefault();
