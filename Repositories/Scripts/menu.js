@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded",function()
 
     btnArtista.addEventListener("click",function()
     {
-        window.location='Artistas/Get';
+        window.location=BASE+'Artistas/Get';
     });
     btnCancion.addEventListener("click",function()
     {
-        window.location='Canciones/Get';
+        window.location=BASE+'Canciones/Get';
     });
     btnAC.addEventListener("click",function()
     {
-        window.location='Artistas/Canciones';
+        window.location=BASE+'Artistas/Canciones';
     });
 });
