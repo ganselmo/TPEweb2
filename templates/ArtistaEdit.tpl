@@ -13,7 +13,7 @@
     <input type="text" class="form-control" name="ranking" value="{$artista->ranking}">
   </div>
   <button type="submit" class="btn btn-primary">Modificar</button>
-  <button type="button" class="btn btn-warning">Cancelar</button>
+  
 </form>
 
 {include file="footer.tpl"}
