@@ -22,4 +22,6 @@ class Artista extends Model
         
         $sql->execute(array($id));
     }
+
+   
 }

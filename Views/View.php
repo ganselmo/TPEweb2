@@ -30,4 +30,8 @@ class View
     {
         echo ("<script>history.replaceState({},'','$url');</script>");
     }
+    function returnSession()
+    {
+        return $this->session;
+    }
 }

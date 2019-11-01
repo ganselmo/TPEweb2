@@ -5,13 +5,20 @@ class ArtistaView extends View{
 
 
     public function showIndex($artistas){
-
+        
         $this->smarty->assign('artistas',$artistas);
         $this->smarty->display('templates/allArtistas.tpl');
+        $this->set_url("Artistas/Get");
+    }
+    public function showOne($artista){
+
+        $this->smarty->assign('artista',$artista);
+        $this->smarty->display('templates/Artista.tpl');
     }
 
     public function create()
     {
+        
         $this->smarty->display('templates/ArtistaCreate.tpl');
     }
     public function edit($artista)
