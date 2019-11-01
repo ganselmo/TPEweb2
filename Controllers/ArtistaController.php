@@ -32,7 +32,7 @@ class ArtistaController extends Controller
     public function show($id)
     {
 
-        $artista = $this->model->findById($id);
+        $artista = $this->model->getByID($id);
 
         $this->view->showOne($artista);
     }
@@ -40,9 +40,9 @@ class ArtistaController extends Controller
 
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            
+
             $artista = $this->model->getByID($id);
-           
+
             $this->view->edit($artista);
         } else {
             Route::directDefault();
@@ -51,7 +51,11 @@ class ArtistaController extends Controller
     public function save($data)
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $this->model->update($data);
+            $values = [];
+            foreach ($data as $key => $value) {
+                array_push($values, $value);
+            }
+            $this->model->update($values);
             $this->index();
         } else {
             Route::directDefault();
@@ -61,7 +65,12 @@ class ArtistaController extends Controller
     public function insert($data)
     {
         if ($this->view->returnSession()->isLoggedIn()) {
-            $this->model->create($data);
+            $values = [];
+            foreach ($data as $key => $value) {
+                array_push($values, $value);
+            }
+            $this->model->create($values);
+
             $this->index();
         } else {
             Route::directDefault();
