@@ -9,9 +9,7 @@
             <th>Apellido</th>
             <th>Fecha de nacimiento</th>
             <th>Ranking</th>
-            {if $session->isLoggedIn()}
             <th>Accion</th>
-            {/if}
 
         </tr>
     </thead>
@@ -22,11 +20,20 @@
             <td>{$artista->apellido}</td>
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
-            {if $session->isLoggedIn()}
-            <td>
-            <div class="container">
+             <td>
+  <div class="container">
                 <div class="row">
-                    
+              <div class="col-sm-4">
+                        <form action="Artistas/Get/{$artista->id}" method="GET">
+                            <button class= "btn btn-primary btn-md" type="submit">Ver</button>
+                        </form>
+                    </div>
+            {if $session->isLoggedIn()}
+           
+          
+
+                  
+
                     <div class="col-sm-4">
                         <form action="Artistas/Edit/{$artista->id}" method="GET">
                             <button class= "btn btn-warning btn-md" type="submit">Modificar</button>

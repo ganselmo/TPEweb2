@@ -3,11 +3,13 @@ require_once 'Controller.php';
 require_once '.\Models\Artista.php';
 require_once '.\Views\ArtistaView.php';
 
-class ArtistaController extends Controller {
+class ArtistaController extends Controller
+{
 
-    function __construct() {
+    function __construct()
+    {
         $this->model = new Artista();
-        $this->view= new ArtistaView();
+        $this->view = new ArtistaView();
     }
 
     public function index()
@@ -19,36 +21,60 @@ class ArtistaController extends Controller {
 
     public function create()
     {
-        $this->view->create();
+        if ($this->view->returnSession()->isLoggedIn()) {
+
+            $this->view->create();
+        } else {
+            Route::directDefault();
+        }
+    }
+
+    public function show($id)
+    {
+
+        $artista = $this->model->findById($id);
+
+        $this->view->showOne($artista);
     }
     public function edit($id)
 
     {
-        $artista = $this->model->findById($id);
+        if ($this->view->returnSession()->isLoggedIn()) {
 
-        $this->view->edit($artista);
+            $artista = $this->model->findById($id);
+
+            $this->view->edit($artista);
+        } else {
+            Route::directDefault();
+        }
     }
     public function save($data)
     {
-        $this->model->update($data);
-        $this->index();
+        if ($this->view->returnSession()->isLoggedIn()) {
+            $this->model->update($data);
+            $this->index();
+        } else {
+            Route::directDefault();
+        }
     }
 
     public function insert($data)
     {
-        $this->model->insert($data);
-        $this->index();
+        if ($this->view->returnSession()->isLoggedIn()) {
+            $this->model->insert($data);
+            $this->index();
+        } else {
+            Route::directDefault();
+        }
     }
 
     public function delete($id)
     {
-        $this->model->delete($id['id']);
-        $this->index();
+        if ($this->view->returnSession()->isLoggedIn()) {
+            $this->model->delete($id['id']);
+            $this->index();
+        } else {
+            Route::directDefault();
+        }
     }
-
-    
-
-    
-
 }
-

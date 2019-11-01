@@ -21,6 +21,12 @@
             "controllerMethod": "create"
         },
         {
+            "url": "Artistas/Get/[id]",
+            "httpMethod": "GET",
+            "controller": "ArtistaController",
+            "controllerMethod": "show"
+        },
+        {
             "url": "Artistas/Edit/[id]",
             "httpMethod": "GET",
             "controller": "ArtistaController",
