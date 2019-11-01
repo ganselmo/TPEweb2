@@ -33,8 +33,9 @@ class CancionView extends View{
         $this->smarty->assign('cancion',$cancion);
         $this->smarty->display('templates/Cancion.tpl');
     }
-    public function create()
+    public function create($artistas)
     {
+        $this->smarty->assign('artistas',$artistas);
         $this->smarty->display('templates/CancionCreate.tpl');
     }
     public function edit($cancion)

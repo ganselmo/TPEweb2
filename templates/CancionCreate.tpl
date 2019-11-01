@@ -11,7 +11,11 @@
     <label for="album">Álbum</label>
     <input type="text" class="form-control" name="album">
     <label for="id_artista">Artista</label>
-    <input type="text" class="form-control" name="id_artista">
+    <select name="id_artista" class="form-control">
+      {foreach from=$artistas item=artista}
+      <option value="{$artista->id}">{$artista->nombre} {$artista->apellido}</option>
+      {/foreach}
+    </select>
     <label for="ranking">Ranking</label>
     <input type="text" class="form-control" name="ranking">
   </div>
