@@ -61,7 +61,7 @@ class CancionController extends Controller{
 
     {
 
-        $cancion = $this->model->findById($id);
+        $cancion = $this->model->getByID($id);
 
         $this->view->edit($cancion);
     }
