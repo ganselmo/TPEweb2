@@ -50,29 +50,12 @@ class QuerySQL
         $sql = 'SELECT * FROM '. $tabla . ' WHERE id = ?';
         return $sql;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    function findFirstByColumn($tabla,$column,$parameter)
-    {
-        $query = ($this->db->prepare('SELECT * FROM '. $tabla . ' WHERE '.$column.' = ?')); 
-        $query->execute(array($parameter));
-        $obj = $query->fetch(PDO::FETCH_OBJ); 
-        return $obj;
-    }
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 0d988cdce5a547a91210c6301eb9139e9afd04b3
+
+
 
     public function selectBoth($tabla1, $tabla2, $id1, $id2, $filtro) {
         $sql = 'SELECT * FROM '. $tabla1 . ', ' . $tabla2 . ' WHERE ? = ? AND ' . $filtro . '= ?';
         return $sql;
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 94c0b168e315c56374975573717b292c765564b0
->>>>>>> 1802a79d24e27c47e6133a1c746e8cb4931d9203
-=======
->>>>>>> 0d988cdce5a547a91210c6301eb9139e9afd04b3
+
 }
