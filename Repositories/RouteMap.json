@@ -97,7 +97,55 @@
                 "data"
             ]
            
-        }
+        },
        
+        {
+            "url": "Canciones/Get",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "index"
+
+        },
+        {
+            "url": "Canciones/Create",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "create"
+        },
+        {
+            "url": "Canciones/Edit/[id]",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "edit"
+        },
+        {
+            "url": "Canciones/Patch",
+            "httpMethod": "POST",
+            "controller": "CancionController",
+            "controllerMethod": "save",
+            "parameters": [
+                "id",
+                "data"
+            ]
+        },
+        {
+            "url": "Canciones/New",
+            "httpMethod": "POST",
+            "controller": "CancionController",
+            "controllerMethod": "insert",
+            "parameters": [
+                "id",
+                "data"
+            ]
+        },
+        {
+            "url": "Canciones/Delete",
+            "httpMethod": "POST",
+            "controller": "CancionController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
+            ]
+        }
     ]
 }

@@ -1,8 +1,9 @@
 <?php
-require_once('libs/Smarty.class.php');
+require_once("View.php");
 
-class CancionView {
+class CancionView extends View{
     function __construct(){
+        parent::__construct();
     }
 
     public function display($canciones){
@@ -19,5 +20,26 @@ class CancionView {
         $smarty->assign('cancion',$cancion);
         $smarty->assign('BASE',BASE);
         $smarty->display('templates/cancionAdmUpdate.tpl');
+    }
+
+    public function showIndex($canciones){
+
+        $this->smarty->assign('canciones',$canciones);
+        $this->smarty->display('templates/allCanciones.tpl');
+    }
+
+    public function showOne($artista){
+
+        $this->smarty->assign('artista',$artista);
+        $this->smarty->display('templates/Artista.tpl');
+    }
+    public function create()
+    {
+        $this->smarty->display('templates/ArtistaCreate.tpl');
+    }
+    public function edit($artista)
+    {
+        $this->smarty->assign('artista',$artista);
+        $this->smarty->display('templates/ArtistaEdit.tpl');
     }
 }
