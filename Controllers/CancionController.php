@@ -14,17 +14,6 @@ class CancionController extends Controller
         $this->view = new CancionView();
     }
 
-    public function update()
-    {
-        if (isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
-            $this->model->update(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking'], $_POST['id']));
-            header("Location: " . BASE_CANCION);
-        } elseif (isset($_GET) && isset($_GET['id'])) {
-            $cancion = $this->findById($_GET['id']);
-            $this->view->displayUpdate($cancion);
-        }
-    }
-
     private function findById($id)
     {
         return $this->model->getByID($id);
@@ -41,8 +30,8 @@ class CancionController extends Controller
     public function index()
     {
         $canciones = $this->model->get();
-
-        $this->view->showIndex($canciones);
+        $artistas = $this->modelArt->all();
+        $this->view->showIndex($canciones, $artistas);
     }
 
     public function show($id)
@@ -67,7 +56,7 @@ class CancionController extends Controller
         if ($this->view->returnSession()->isLoggedIn()) {
             $values = [];
             foreach ($data as $key => $value) {
-                array_push($values, $key);
+                array_push($values, $value);
             }
             $this->model->update($values);
             $this->index();

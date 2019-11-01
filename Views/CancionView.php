@@ -6,24 +6,8 @@ class CancionView extends View{
         parent::__construct();
     }
 
-    public function display($canciones){
-        $smarty = new Smarty();
-        $smarty->assign('titulo',"Canciones");
-        $smarty->assign('BASE',BASE);
-        $smarty->assign('canciones',$canciones);
-        $smarty->display('templates/cancionesAdm.tpl');
-    }
-
-    public function displayUpdate($cancion){
-        $smarty = new Smarty();
-        $smarty->assign('titulo',"Canción a modificar");
-        $smarty->assign('cancion',$cancion);
-        $smarty->assign('BASE',BASE);
-        $smarty->display('templates/cancionAdmUpdate.tpl');
-    }
-
-    public function showIndex($canciones){
-
+    public function showIndex($canciones, $artistas){
+        $this->smarty->assign('artistas',$artistas);
         $this->smarty->assign('canciones',$canciones);
         $this->smarty->display('templates/allCanciones.tpl');
     }
