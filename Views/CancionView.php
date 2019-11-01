@@ -6,8 +6,7 @@ class CancionView extends View{
         parent::__construct();
     }
 
-    public function showIndex($canciones, $artistas){
-        $this->smarty->assign('artistas',$artistas);
+    public function showIndex($canciones){
         $this->smarty->assign('canciones',$canciones);
         $this->smarty->display('templates/allCanciones.tpl');
     }

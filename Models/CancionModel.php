@@ -20,9 +20,9 @@ class CancionModel extends Modelo
     }
 
     public function getCancionesArtistas() {
-        $query = $this->db->prepare($this->query->selectByID(array($this->tabla, 'artistas'))); 
-        $query->execute(array($id));
-        $result = $query->fetch(PDO::FETCH_OBJ);
+        $query = $this->db->prepare('SELECT * FROM artistas INNER JOIN canciones ON artistas.id = canciones.id_artista'); 
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 }

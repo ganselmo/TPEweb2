@@ -24,7 +24,7 @@
             <td>{$cancion->duracion}</td>
             <td>{$cancion->genero}</td>
             <td>{$cancion->album}</td>
-            <td>{$arti->id_artista}</td>
+            <td>{$cancion->apellido}</td>
             <td>{$cancion->ranking}</td>
             {if $session->isLoggedIn()}
             <td>

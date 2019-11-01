@@ -1,7 +1,7 @@
 <?php
 require_once 'Controller.php';
 require_once '.\Models\CancionModel.php';
-require_once '.\Models\Artista.php';
+require_once '.\Models\ArtistaModel.php';
 require_once '.\Views\CancionView.php';
 
 class CancionController extends Controller
@@ -10,7 +10,7 @@ class CancionController extends Controller
     function __construct()
     {
         $this->model = new CancionModel();
-        $this->modelArt = new Artista();
+        $this->modelArt = new ArtistaModel();
         $this->view = new CancionView();
     }
 
@@ -22,16 +22,14 @@ class CancionController extends Controller
     public function findByColumn($column, $parameter)
     {
         $obj = $this->model->findByColumn($column, $parameter);
-        var_dump($obj);
         die;
     }
 
 
     public function index()
     {
-        $canciones = $this->model->get();
-        $artistas = $this->modelArt->all();
-        $this->view->showIndex($canciones, $artistas);
+        $canciones = $this->model->getCancionesArtistas();
+        $this->view->showIndex($canciones);
     }
 
     public function show($id)
