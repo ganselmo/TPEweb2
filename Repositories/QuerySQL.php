@@ -50,4 +50,9 @@ class QuerySQL
         $sql = 'SELECT * FROM '. $tabla . ' WHERE id = ?';
         return $sql;
     }
+
+    public function selectBoth($tabla1, $tabla2, $id1, $id2, $filtro) {
+        $sql = 'SELECT * FROM '. $tabla1 . ', ' . $tabla2 . ' WHERE ? = ? AND ' . $filtro . '= ?';
+        return $sql;
+    }
 }

@@ -18,4 +18,11 @@ class CancionModel extends Modelo
         $sentencia = $this->db->prepare($this->query->update($this->tabla, array('nombre','duracion','genero','album','id_artista','ranking')));
         $sentencia->execute($values);
     }
+
+    public function getCancionesArtistas() {
+        $query = $this->db->prepare($this->query->selectByID(array($this->tabla, 'artistas'))); 
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
 }
