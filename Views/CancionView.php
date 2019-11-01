@@ -28,18 +28,18 @@ class CancionView extends View{
         $this->smarty->display('templates/allCanciones.tpl');
     }
 
-    public function showOne($artista){
+    public function showOne($cancion){
 
-        $this->smarty->assign('artista',$artista);
-        $this->smarty->display('templates/Artista.tpl');
+        $this->smarty->assign('cancion',$cancion);
+        $this->smarty->display('templates/Cancion.tpl');
     }
     public function create()
     {
         $this->smarty->display('templates/ArtistaCreate.tpl');
     }
-    public function edit($artista)
+    public function edit($cancion)
     {
-        $this->smarty->assign('artista',$artista);
-        $this->smarty->display('templates/ArtistaEdit.tpl');
+        $this->smarty->assign('cancion',$cancion);
+        $this->smarty->display('templates/CancionEdit.tpl');
     }
 }
