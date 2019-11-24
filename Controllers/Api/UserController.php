@@ -1,7 +1,7 @@
 <?php
 require_once("Models/User.php");
 require_once("Views/UserView.php");
-class UserController extends Controller
+class UserController extends ApiController
 {
     public function __construct()
     {
