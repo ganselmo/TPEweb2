@@ -5,7 +5,8 @@ class HomeController extends Controller
 
     public function __construct()
     {
-        $this->view= new HomeView();
+        parent::__construct();
+        $this->view= new HomeView($this->session);
     }
     function index()
     {

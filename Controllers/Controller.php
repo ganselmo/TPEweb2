@@ -7,9 +7,9 @@ class Controller
     protected $view;
     protected $session;
    
-    public function __construct(Session $session)
+    public function __construct()
     {
-        $this->session = $session;
+        $this->session = new Session();
     }
 
 

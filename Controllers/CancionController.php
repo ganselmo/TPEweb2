@@ -9,9 +9,10 @@ class CancionController extends Controller
 
     function __construct()
     {
+        parent::__construct();
         $this->model = new CancionModel();
         $this->modelArt = new ArtistaModel();
-        $this->view = new CancionView();
+        $this->view = new CancionView($this->session);
     }
 
     private function findById($id)
@@ -42,7 +43,7 @@ class CancionController extends Controller
     public function edit($id)
 
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $cancion = $this->model->getByID($id);
             $this->view->edit($cancion);
         } else {
@@ -51,7 +52,7 @@ class CancionController extends Controller
     }
     public function save($data)
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $values = [];
             foreach ($data as $key => $value) {
                 array_push($values, $value);
@@ -65,7 +66,7 @@ class CancionController extends Controller
 
     public function create()
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $artistas = $this->modelArt->get();
             $this->view->create($artistas);
         } else {
@@ -75,7 +76,7 @@ class CancionController extends Controller
 
     public function insert($data)
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $values = [];
             foreach ($data as $key => $value) {
                 array_push($values, $value);
@@ -89,7 +90,7 @@ class CancionController extends Controller
 
     public function delete($id)
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $this->model->delete($id['id']);
             $this->index();
         } else {

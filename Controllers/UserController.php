@@ -8,7 +8,8 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->view = new UserView();
+        parent::__construct();
+        $this->view = new UserView($this->session);
         $this->model = new User();
     }
     function loginView()
@@ -20,10 +21,15 @@ class UserController extends Controller
     {
         $userName = $data['email'];
         $pass = $data['opass'];
+    
+        
+        
         if($this->model->verifyUser($userName,$pass))
         {
-           
-            $this->model->login($userName, $pass);
+            
+            $user = $this->model->getByUsername($userName);
+          
+            $this->session->login($user);
             $this->view->goHome();
         }
         else{

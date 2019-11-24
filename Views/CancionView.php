@@ -2,10 +2,7 @@
 require_once("View.php");
 
 class CancionView extends View{
-    function __construct(){
-        parent::__construct();
-    }
-
+  
     public function showIndex($canciones){
         $this->smarty->assign('canciones',$canciones);
         $this->smarty->display('templates/allCanciones.tpl');

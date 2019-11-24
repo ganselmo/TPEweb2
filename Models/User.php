@@ -16,19 +16,12 @@ class User
     }
     public function register($userName,$pass)
     {
-
-
         $query = $this->db->prepare('INSERT INTO usuarios (user,password) values (?,?)');
         $query->execute(array($userName, password_hash($pass, PASSWORD_BCRYPT)));
     }
 
-    public function login($userName,$pass)
-    {
-        $session = new Session();
-        
-        $session->login($this->getByUsername($userName));
-    }
-    private function getByUsername($userName)
+
+    public function getByUsername($userName)
     {
         $query = $this->db->prepare($this->query->findfirstByColumn($this->tabla, 'user')); 
         $query->execute(array($userName));
@@ -36,9 +29,7 @@ class User
         return $result;
     }
 
-    public function verifyUser($userName,$password) {
-
-        
+    public function verifyUser($userName,$password) {        
         $user = $this->getByUsername($userName);
         // encontró un user con el username que mandó, y tiene la misma contraseña
         if (!empty($user) && password_verify($password, $user->password)) {

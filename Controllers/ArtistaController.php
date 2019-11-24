@@ -8,8 +8,9 @@ class ArtistaController extends Controller
 
     function __construct()
     {
+        parent::__construct();
         $this->model = new ArtistaModel();
-        $this->view = new ArtistaView();
+        $this->view = new ArtistaView($this->session);
     }
 
     public function index()
@@ -21,7 +22,7 @@ class ArtistaController extends Controller
 
     public function create()
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
 
             $this->view->create();
         } else {
@@ -39,7 +40,7 @@ class ArtistaController extends Controller
     public function edit($id)
 
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
 
             $artista = $this->model->getByID($id);
 
@@ -50,7 +51,7 @@ class ArtistaController extends Controller
     }
     public function save($data)
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $values = [];
             foreach ($data as $key => $value) {
                 array_push($values, $value);
@@ -64,7 +65,7 @@ class ArtistaController extends Controller
 
     public function insert($data)
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $values = [];
             foreach ($data as $key => $value) {
                 array_push($values, $value);
@@ -79,7 +80,7 @@ class ArtistaController extends Controller
 
     public function delete($id)
     {
-        if ($this->view->returnSession()->isLoggedIn()) {
+        if ($this->session->isLoggedIn()) {
             $this->model->delete($id['id']);
             $this->index();
         } else {

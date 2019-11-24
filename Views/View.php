@@ -4,15 +4,14 @@ require_once('.\Repositories\Session.php');
 class View
 {
     protected $smarty;
-    protected $session;
     protected $errors;
-    function __construct()
+    function __construct(Session $sessionData)
     {
-        $this->session = new Session();
+       
         $this->smarty = new Smarty();
 
         $this->smarty->assign('titulo', "Bienvenidos");
-        $this->smarty->assign('session', $this->session);
+        $this->smarty->assign('session', $sessionData);
         $this->smarty->assign('BASE', BASE);
     }
 
@@ -30,8 +29,6 @@ class View
     {
         echo ("<script>history.replaceState({},'','$url');</script>");
     }
-    function returnSession()
-    {
-        return $this->session;
-    }
+    
+
 }
