@@ -21,7 +21,6 @@ class View
     }
     function errors($errors)
     {
-
         $this->errors = $errors;
         $this->smarty->assign('errors', $this->errors);
     }

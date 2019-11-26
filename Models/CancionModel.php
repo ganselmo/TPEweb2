@@ -1,5 +1,6 @@
 <?php 
 require_once("Models/Modelo.php");
+require_once("Models/ArtistaModel.php");
 
 class CancionModel extends Modelo 
 {
@@ -9,20 +10,39 @@ class CancionModel extends Modelo
         $this->tabla = "canciones";
     }
 
-    public function create($values) {
+    public function create($data) {
         $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('nombre','duracion','genero','album','id_artista','ranking')));
-        $sentencia->execute($values);
+        $sentencia->execute([$data->nombre,$data->duracion,$data->genero,$data->album,$data->id_artista,$data->ranking]);
     }
 
-    public function update($values) {
+    public function update($data) {
         $sentencia = $this->db->prepare($this->query->update($this->tabla, array('nombre','duracion','genero','album','id_artista','ranking')));
-        $sentencia->execute($values);
+        $sentencia->execute([$data->nombre,$data->duracion,$data->genero,$data->album,$data->id_artista,$data->ranking,$data->id]);
     }
 
-    public function getCancionesArtistas() {
+
+    public function getWithArtista($id) {
+
+        $cancion = $this->getByID($id);
+        
+        $artista = new ArtistaModel() ;
+        $cancion->artista = $artista->getByID($cancion->id_artista);
+        unset($cancion->id_artista);
+        return $cancion;
+    }
+    public function getAllWithArtista() {
         $query = $this->db->prepare('SELECT * FROM artistas INNER JOIN canciones ON artistas.id = canciones.id_artista'); 
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_OBJ);
-        return $result;
+
+        $canciones = [];
+        foreach($result as $cancion){
+            array_push($canciones,$this->getWithArtista($cancion->id));
+
+        }
+
+        return $canciones;
+
+
     }
 }

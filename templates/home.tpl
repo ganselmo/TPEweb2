@@ -1,11 +1,8 @@
 {include file="header.tpl"}
 
-<div class = "row">
-    <button type="submit" id="Artistas" class="btn btn-primary btn-lg btn-block" >Artistas</button>
-    <button type="button" id="Canciones" class="btn btn-secondary btn-lg btn-block">Canciones</button>
-    
+<div id="menu" class = "row">
+    <button type="button"  v-on:click="redirect" class="btn btn-primary btn-lg btn-block" >Artistas</button>
+    <button type="button"  v-on:click="redirect" class="btn btn-secondary btn-lg btn-block">Canciones</button> 
 </div>
-  
-
-<script src="./Repositories/Scripts/menu.js"></script>
+<script src="./Repositories/Scripts/menuVue.js"></script>
 {include file="footer.tpl"}

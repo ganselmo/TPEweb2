@@ -38,9 +38,5 @@ class User
             return false;
         }
     }
-    public function logOut()
-    {
-        $session = new Session();
-        $session->logOut();
-    }
+
 }

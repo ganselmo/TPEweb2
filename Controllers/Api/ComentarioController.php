@@ -1,37 +1,43 @@
 <?php
 require_once 'ApiController.php';
-require_once '.\Models\CancionModel.php';
+require_once '.\Models\ComentarioModel.php';
 
-class CancionController extends ApiController
+
+class ArtistaController extends ApiController
 {
 
     function __construct()
     {
-        parent::__construct();
-        $this->model = new CancionModel();
+        parent::__construct();  
+        $this->model = new ArtistaModel();
     }
+
     public function index()
     {
-        $canciones = $this->model->getAllWithArtista();
-        $this->json->response($canciones,200);
+        $artistas = $this->model->get();
+        $this->json->response($artistas,200);
     }
+
 
     public function show($id)
     {
-
-        $cancion = $this->model->getWithArtista($id);
-        $this->json->response($cancion,200);
+        $artista = $this->model->getByID($id);  
+        $this->json->response($artista,200);
     }
+
     public function save($data)
     {
+           
         $this->model->update($data);
         $this->json->responseStatus(200);
     }
 
     public function insert($data)
     {
+
         $this->model->create($data);
         $this->json->responseStatus(200);
+        
     }
 
     public function delete($id)

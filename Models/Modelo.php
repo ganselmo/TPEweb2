@@ -28,6 +28,6 @@ abstract class Modelo
 
     public function delete($id) {
         $sentencia = $this->db->prepare($this->query->delete($this->tabla));
-        $sentencia->execute(array($id));
+        $sentencia->execute([$id->id]);
     }
 }

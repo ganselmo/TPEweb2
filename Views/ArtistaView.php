@@ -4,15 +4,12 @@ require_once("View.php");
 class ArtistaView extends View{
 
 
-    public function showIndex($artistas){
-        
-        $this->smarty->assign('artistas',$artistas);
+    public function showIndex(){
+
         $this->smarty->display('templates/allArtistas.tpl');
         $this->set_url("Artistas/Get");
     }
-    public function showOne($artista){
-
-        $this->smarty->assign('artista',$artista);
+    public function showOne(){
         $this->smarty->display('templates/Artista.tpl');
     }
 
@@ -21,9 +18,8 @@ class ArtistaView extends View{
         
         $this->smarty->display('templates/ArtistaCreate.tpl');
     }
-    public function edit($artista)
+    public function edit()
     {
-        $this->smarty->assign('artista',$artista);
         $this->smarty->display('templates/ArtistaEdit.tpl');
     }
     

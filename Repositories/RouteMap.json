@@ -21,71 +21,12 @@
             "controllerMethod": "create"
         },
         {
-            "url": "Api/Artistas/Get/[id]",
-            "httpMethod": "GET",
-            "controller": "ArtistaController",
-            "controllerMethod": "show"
-        },
-        {
-            "url": "Artistas/Edit/[id]",
-            "httpMethod": "GET",
-            "controller": "ArtistaController",
-            "controllerMethod": "edit"
-        },
-        {
-            "url": "Api/Artistas/Patch",
-            "httpMethod": "PATCH",
-            "controller": "ArtistaController",
-            "controllerMethod": "save",
-            "parameters": [
-                "id",
-                "data"
-            ]
-        },
-        {
-            "url": "Api/Artistas/New",
-            "httpMethod": "POST",
-            "controller": "ArtistaController",
-            "controllerMethod": "insert",
-            "parameters": [
-                "id",
-                "data"
-            ]
-        },
-        {
-            "url": "Api/Artistas/Delete",
-            "httpMethod": "DELETE",
-            "controller": "ArtistaController",
-            "controllerMethod": "delete",
-            "parameters": [
-                "id"
-            ]
-        },
-         {
-            "url": "User/Logout",
-            "httpMethod": "GET",
-            "controller": "UserController",
-            "controllerMethod": "logOut"
-           
-        },
-        {
             "url": "User/Login",
             "httpMethod": "GET",
             "controller": "UserController",
             "controllerMethod": "LoginView"
            
         },
-       
-        {
-            "url": "User/Login",
-            "httpMethod": "POST",
-            "controller": "UserController",
-            "controllerMethod": "login",
-            "parameters": [
-                "data"
-            ]
-        }
-        ,
         {
             "url": "User/Register",
             "httpMethod": "GET",
@@ -93,18 +34,7 @@
             "controllerMethod": "registerView"
            
         }
-        ,
-        {
-            "url": "User/Register",
-            "httpMethod": "POST",
-            "controller": "UserController",
-            "controllerMethod": "register",
-            "parameters": [
-                "data"
-            ]
-           
-        },
-       
+        , 
         {
             "url": "Canciones/Get",
             "httpMethod": "GET",
@@ -117,41 +47,7 @@
             "httpMethod": "GET",
             "controller": "CancionController",
             "controllerMethod": "create"
-        },
-        {
-            "url": "Canciones/Edit/[id]",
-            "httpMethod": "GET",
-            "controller": "CancionController",
-            "controllerMethod": "edit"
-        },
-        {
-            "url": "Canciones/Patch",
-            "httpMethod": "POST",
-            "controller": "CancionController",
-            "controllerMethod": "save",
-            "parameters": [
-                "id",
-                "data"
-            ]
-        },
-        {
-            "url": "Canciones/New",
-            "httpMethod": "POST",
-            "controller": "CancionController",
-            "controllerMethod": "insert",
-            "parameters": [
-                "id",
-                "data"
-            ]
-        },
-        {
-            "url": "Canciones/Delete",
-            "httpMethod": "POST",
-            "controller": "CancionController",
-            "controllerMethod": "delete",
-            "parameters": [
-                "id"
-            ]
         }
+      
     ]
 }

@@ -7,6 +7,7 @@
     <base href='{BASE}'>
     <link rel="stylesheet" href="./Repositories/bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <title>{$titulo}</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">

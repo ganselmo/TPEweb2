@@ -1,0 +1,144 @@
+{
+    "routes": [
+        {
+            "url": "Artistas/All",
+            "httpMethod": "GET",
+            "controller": "ArtistaController",
+            "controllerMethod": "index"
+
+        },
+        {
+            "url": "Artistas/Get/[id]",
+            "httpMethod": "GET",
+            "controller": "ArtistaController",
+            "controllerMethod": "show"
+        },
+        {
+            "url": "Artistas/Patch",
+            "httpMethod": "PATCH",
+            "controller": "ArtistaController",
+            "controllerMethod": "save",
+            "parameters": [
+                "id",
+                "data"
+            ]
+        },
+        {
+            "url": "Artistas/New",
+            "httpMethod": "POST",
+            "controller": "ArtistaController",
+            "controllerMethod": "insert",
+            "parameters": [
+                "data"
+            ]
+        },
+        {
+            "url": "Artistas/Delete",
+            "httpMethod": "DELETE",
+            "controller": "ArtistaController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
+            ]
+        },
+         {
+            "url": "User/Logout",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "logOut"
+           
+        },
+
+       
+        {
+            "url": "User/Login",
+            "httpMethod": "POST",
+            "controller": "UserController",
+            "controllerMethod": "login",
+            "parameters": [
+                "data"
+            ]
+        }
+        ,
+        
+        {
+            "url": "User/Register",
+            "httpMethod": "POST",
+            "controller": "UserController",
+            "controllerMethod": "register",
+            "parameters": [
+                "data"
+            ]
+           
+        },
+        {
+            "url": "Canciones/All",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "index"
+        },
+        {
+            "url": "Canciones/Get/[id]",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "show"
+        },
+        {
+            "url": "Canciones/Patch",
+            "httpMethod": "PATCH",
+            "controller": "CancionController",
+            "controllerMethod": "save",
+            "parameters": [
+                "id",
+                "data"
+            ]
+        },
+        {
+            "url": "Canciones/New",
+            "httpMethod": "POST",
+            "controller": "CancionController",
+            "controllerMethod": "insert",
+            "parameters": [
+                "id",
+                "data"
+            ]
+        },
+        {
+            "url": "Canciones/Delete",
+            "httpMethod": "DELETE",
+            "controller": "CancionController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
+            ]
+        },
+        {
+            "url": "Comentarios/Get",
+            "httpMethod": "Get",
+            "controller": "CancionController",
+            "controllerMethod": "all",
+            "parameters": [
+                "id"
+            ]
+        },
+        {
+            "url": "Canciones/Delete",
+            "httpMethod": "DELETE",
+            "controller": "CancionController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
+            ]
+        }
+        ,
+        {
+            "url": "Canciones/Delete",
+            "httpMethod": "DELETE",
+            "controller": "CancionController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
+            ]
+        }
+    ]
+}

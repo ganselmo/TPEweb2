@@ -3,7 +3,7 @@ require_once '.\Repositories\Session.php';
 
 class Controller 
 {
-    protected $model;
+
     protected $view;
     protected $session;
    
@@ -13,8 +13,4 @@ class Controller
     }
 
 
-    public function get(){
-        $query = $this->model->get();
-        $this->view->display($query);
-    }
 }

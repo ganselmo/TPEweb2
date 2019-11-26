@@ -1,5 +1,7 @@
 {include file="header.tpl"}
 
+{literal}
+    
 
 <div class = "row">
     <table class="table table-hover">
@@ -14,17 +16,17 @@
         </tr>
     </thead>
     <tbody>
-        {foreach from=$artistas item=artista}
+      
         <tr>
-            <td>{$artista->nombre}</td>
-            <td>{$artista->apellido}</td>
-            <td>{$artista->fechanac}</td>
-            <td>{$artista->ranking}</td>
-             <td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>    
   <div class="container">
                 <div class="row">
               <div class="col-sm-4">
-                        <form action="Artistas/Get/{$artista->id}" method="GET">
+                        <form action="Artistas/Get&" method="GET">
                             <button class= "btn btn-primary btn-md" type="submit">Ver</button>
                         </form>
                     </div>
@@ -50,7 +52,7 @@
                 </div>
             </div
             </td>
-
+           
             {/if}
       
         </tr>
@@ -59,11 +61,13 @@
     </table>
 </div>
 <div class = "row">
-{if $session->isLoggedIn()}
+
              
                         <form action="Artistas/Create" method="GET">
                             <button class= "btn btn-info btn-md" type="submit">Nuevo</button>
                         </form>
- {/if}
+
 </div>
+{/literal}
+<script></script>
 {include file="footer.tpl"}

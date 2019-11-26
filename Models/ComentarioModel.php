@@ -1,12 +1,12 @@
 <?php 
 require_once("Models/Modelo.php");
 
-class ArtistaModel extends Modelo
+class ComentarioModel extends Modelo
 {
     public function __construct () {
         $this->db = Database::getInstance()->getConnection();
         $this->query = new QuerySQL();
-        $this->tabla = "artistas";
+        $this->tabla = "comentarios";
     }
 
     public function create($data) {

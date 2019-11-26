@@ -3,24 +3,20 @@ require_once("View.php");
 
 class CancionView extends View{
   
-    public function showIndex($canciones){
-        $this->smarty->assign('canciones',$canciones);
+    public function showIndex(){
+
         $this->smarty->display('templates/allCanciones.tpl');
     }
 
-    public function showOne($cancion){
 
-        $this->smarty->assign('cancion',$cancion);
-        $this->smarty->display('templates/Cancion.tpl');
-    }
-    public function create($artistas)
+    public function create()
     {
-        $this->smarty->assign('artistas',$artistas);
+
         $this->smarty->display('templates/CancionCreate.tpl');
     }
     public function edit($cancion)
     {
-        $this->smarty->assign('cancion',$cancion);
+
         $this->smarty->display('templates/CancionEdit.tpl');
     }
 }
