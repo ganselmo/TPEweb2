@@ -12,10 +12,15 @@ class ApiController
     {
         $this->session = new Session();
         $this->json = new JsonResponse();
+
     }
 
     public function notFound()
     {
         $this->json->responseStatus(404);
+    }
+    public function accessDenied()
+    {
+        $this->json->responseStatus(402);
     }
 }

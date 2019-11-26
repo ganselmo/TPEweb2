@@ -10,16 +10,18 @@ class ComentarioModel extends Modelo
     }
 
     public function create($data) {
-        $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('nombre','apellido','fechanac','ranking')));
-        
-        $sentencia->execute([$data->nombre,$data->apellido,$data->fechanac,$data->ranking]);
+        $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('id_user','timestamp','comentario','valoracion','id_cancion')));
+        $sentencia->execute([$data->id_user,$data->timestamp,$data->comentario,$data->valoracion,$data->id_cancion]);
     }
 
     public function update($data) {
-        $sentencia = $this->db->prepare($this->query->update($this->tabla, array('nombre','apellido','fechanac','ranking')));
-        $sentencia->execute([$data->nombre,$data->apellido,$data->fechanac,$data->ranking,$data->id]);
+        $sentencia = $this->db->prepare($this->query->update($this->tabla, array('id_user','timestamp','comentario','valoracion','id_cancion')));
+        $sentencia->execute([$data->id_user,$data->timestamp,$data->comentario,$data->valoracion,$data->id_cancion,$data->id]);
     
     }
-
+    public function allInCancion($idCancion)
+    {
+        
+    }
     
 }

@@ -93,7 +93,6 @@ class RouterApi
                               
                                 $route = new ApiRoute($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
                                 $jsonRoute->getControllerMethod(),  $parameters[$parameter] );
-
                                 $route->direct();
                                
                             }

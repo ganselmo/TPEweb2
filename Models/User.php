@@ -16,8 +16,9 @@ class User
     }
     public function register($userName,$pass)
     {
-        $query = $this->db->prepare('INSERT INTO usuarios (user,password) values (?,?)');
-        $query->execute(array($userName, password_hash($pass, PASSWORD_BCRYPT)));
+        $query = $this->db->prepare('INSERT INTO usuarios (user,id_role,password) values (?,?,?)');
+        
+        $query->execute(array($userName,2, password_hash($pass, PASSWORD_BCRYPT)));
     }
 
 
@@ -37,6 +38,11 @@ class User
         } else {
             return false;
         }
+    }
+
+    public function all()
+    {
+        
     }
 
 }

@@ -113,28 +113,42 @@
             ]
         },
         {
-            "url": "Comentarios/Get",
-            "httpMethod": "Get",
-            "controller": "CancionController",
-            "controllerMethod": "all",
+            "url": "Comentarios/Get/[id]",
+            "httpMethod": "GET",
+            "controller": "ComentarioController",
+            "controllerMethod": "show"
+        },
+        {
+            "url": "Comentarios/New",
+            "httpMethod": "POST",
+            "controller": "ComentarioController",
+            "controllerMethod": "insert",
             "parameters": [
-                "id"
+                "id",
+                "data"
             ]
         },
         {
-            "url": "Canciones/Delete",
-            "httpMethod": "DELETE",
-            "controller": "CancionController",
-            "controllerMethod": "delete",
+            "url": "Comentarios/Cancion/[idCancion]",
+            "httpMethod": "Get",
+            "controller": "ComentarioController",
+            "controllerMethod": "allInCancion"
+        },
+        {
+            "url": "Comentarios/Patch",
+            "httpMethod": "Patch",
+            "controller": "ComentarioController",
+            "controllerMethod": "save",
             "parameters": [
-                "id"
+                "id",
+                "data"
             ]
         }
         ,
         {
-            "url": "Canciones/Delete",
+            "url": "Comentarios/Delete",
             "httpMethod": "DELETE",
-            "controller": "CancionController",
+            "controller": "ComentarioController",
             "controllerMethod": "delete",
             "parameters": [
                 "id"
