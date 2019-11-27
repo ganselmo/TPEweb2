@@ -22,8 +22,8 @@ class ApiRoute
     public function direct()
     {
         require_once("Controllers/Api/".$this->controller.".php");
-   
-        if((new RoleController())->validateRole($this->method,$this->url))
+        require_once("Controllers/Api/RoleController.php");
+        if((new RoleController())->validateRole("api",$this->httpMethod,$this->url))
         {
             $controller= new $this->controller;
             $method  =$this->controllerMethod;

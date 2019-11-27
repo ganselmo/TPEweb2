@@ -10,6 +10,7 @@ class Session
         $this->checkSession();
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['USER'] = $user->user;
+        $_SESSION['ROLE'] = $user->id_role;
     }
 
     public function logOut()
@@ -31,7 +32,6 @@ class Session
     }
     public function session()
     {
-
         echo session_id();
     }
     public function getLoggedUserName()
@@ -46,5 +46,10 @@ class Session
             session_start();
         }
 
+    }
+    public function getRole()
+    {
+        $this->checkSession();
+        return $_SESSION['ROLE'];
     }
 }
