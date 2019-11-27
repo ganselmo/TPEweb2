@@ -23,7 +23,8 @@ class ApiRoute
     {
         require_once("Controllers/Api/".$this->controller.".php");
         require_once("Controllers/Api/RoleController.php");
-        if((new RoleController())->validateRole("api",$this->httpMethod,$this->url))
+        
+        if((new RoleController())->validateRole("API",$this->httpMethod,$this->url))
         {
             $controller= new $this->controller;
             $method  =$this->controllerMethod;

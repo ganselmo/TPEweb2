@@ -14,6 +14,7 @@ class JSONResponse
   {
     $status = array(
       200 => "OK",
+      402 => "Not authorized",
       404 => "Not found",
       500 => "Internal Server Error"
     );

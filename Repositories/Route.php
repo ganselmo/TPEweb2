@@ -10,7 +10,7 @@ class Route
     private $controller;
     private $parameters= [];
 
-    function __construct($url,$httpMethod,$controller,$controllerMethod,$parametersa)
+    function __construct($url,$httpMethod,$controller,$controllerMethod,$parameters)
     {
         
         
@@ -20,12 +20,12 @@ class Route
         $this->controllerMethod = $controllerMethod;
 
         
-        if(!$parametersa){
+        if(!$parameters){
             if($this->httpMethod == "POST")
             $this->parameters = $_POST;
         }
         else{
-            $this->parameters=$parametersa;
+            $this->parameters=$parameters;
         }
     }
   

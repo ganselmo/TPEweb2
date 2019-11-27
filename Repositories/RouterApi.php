@@ -15,7 +15,7 @@ class RouterApi
         $this->params = file_get_contents("php://input"); 
         $this->JsonRoutes = $this->extractRoutes();
         $this->findMatch();
-
+   
         
     }
 
@@ -50,9 +50,11 @@ class RouterApi
     {
             $count = count($this->url);
 
+
             foreach ($this->JsonRoutes as $jsonRoute) {
                 if ($jsonRoute->getHttpMethod() == $this->httpMethod) {
 
+                   
                     $UrlArray = explode("/", $jsonRoute->getURL());
 
                     if ($count == count($UrlArray)) {
@@ -81,19 +83,21 @@ class RouterApi
                                 $contador++;
                             }
 
-
+                            
                         }
                         
-                   
+                    
                         if ($contador == $count) {
-
+                           
                             if(isset($parameters))
                             {
                                 
                               
                                 $route = new ApiRoute($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
                                 $jsonRoute->getControllerMethod(),  $parameters[$parameter] );
+                                
                                 $route->direct();
+
                                
                             }
                             else{

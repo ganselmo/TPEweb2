@@ -16,14 +16,17 @@ class CancionController extends Controller
     {   
         $this->view->showIndex();
     }
+    public function show()
+    {
+        $this->view->show();
+    }
+
     public function edit($id)
     {
-        if ($this->session->isLoggedIn()) {
-            $this->view->edit();
-        } else {
-            Route::directDefault();
-        }
+        $this->view->edit($id);
+
     }
+
     public function create()
     {
         if ($this->session->isLoggedIn()) {

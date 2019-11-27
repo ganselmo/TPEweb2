@@ -1,7 +1,7 @@
 <?php 
 require_once("Models/Modelo.php");
 
-class RoleModel extends Modelo
+class AccessModel extends Modelo
 {
     public function __construct () {
         $this->db = Database::getInstance()->getConnection();
@@ -25,7 +25,6 @@ class RoleModel extends Modelo
         $query = $this->db->prepare("SELECT * FROM ACCESS WHERE ID_ROLE = ? AND TYPE = ? AND METHOD = ? AND URL = ?");
         $query->execute([$idRole,$type,$method,$url]);
         $result = $query->fetchAll(PDO::FETCH_OBJ);
-
         return $result;
 
     }

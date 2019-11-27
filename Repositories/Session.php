@@ -20,16 +20,7 @@ class Session
         session_destroy();
     }
 
-    public function isLoggedIn()
-    {
-
-        $this->checkSession();
-        if (isset( $_SESSION['USER'])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+   
     public function session()
     {
         echo session_id();
@@ -37,7 +28,15 @@ class Session
     public function getLoggedUserName()
     {
         $this->checkSession();
-        return $_SESSION['USER'];
+        if(isset($_SESSION['USER']))
+        {
+            return $_SESSION['USER'];
+        }
+        
+        else
+        {
+            return null;
+        }
     }
 
     public function checkSession()
@@ -50,6 +49,14 @@ class Session
     public function getRole()
     {
         $this->checkSession();
-        return $_SESSION['ROLE'];
+        if(isset( $_SESSION['ROLE']))
+        {
+            return $_SESSION['ROLE'];
+        }
+      
+        else
+        {
+            return null;
+        }
     }
 }

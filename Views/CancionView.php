@@ -7,16 +7,17 @@ class CancionView extends View{
 
         $this->smarty->display('templates/allCanciones.tpl');
     }
-
-
     public function create()
     {
-
         $this->smarty->display('templates/CancionCreate.tpl');
     }
     public function edit($cancion)
     {
-
         $this->smarty->display('templates/CancionEdit.tpl');
+    }
+    public function show()
+    {
+       
+        $this->smarty->display('templates/CancionShow.tpl');
     }
 }

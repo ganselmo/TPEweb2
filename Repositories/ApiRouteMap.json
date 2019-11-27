@@ -48,8 +48,6 @@
             "controllerMethod": "logOut"
            
         },
-
-       
         {
             "url": "User/Login",
             "httpMethod": "POST",
@@ -58,6 +56,12 @@
             "parameters": [
                 "data"
             ]
+        },
+        {
+            "url": "User/Session",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "userSession"
         }
         ,
         
@@ -130,13 +134,13 @@
         },
         {
             "url": "Comentarios/Cancion/[idCancion]",
-            "httpMethod": "Get",
+            "httpMethod": "GET",
             "controller": "ComentarioController",
             "controllerMethod": "allInCancion"
         },
         {
             "url": "Comentarios/Patch",
-            "httpMethod": "Patch",
+            "httpMethod": "PATCH",
             "controller": "ComentarioController",
             "controllerMethod": "save",
             "parameters": [

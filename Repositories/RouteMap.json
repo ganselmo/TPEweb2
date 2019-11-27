@@ -15,6 +15,13 @@
 
         },
         {
+            "url": "Artistas/Get/[id]",
+            "httpMethod": "GET",
+            "controller": "ArtistaController",
+            "controllerMethod": "show"
+
+        },
+        {
             "url": "Artistas/Create",
             "httpMethod": "GET",
             "controller": "ArtistaController",
@@ -47,6 +54,13 @@
             "httpMethod": "GET",
             "controller": "CancionController",
             "controllerMethod": "create"
+        },
+        {
+            "url": "Canciones/Get/[id]",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "show"
+
         }
       
     ]

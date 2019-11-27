@@ -1,9 +1,10 @@
 <?php
+require_once("Models/Modelo.php");
 require_once("Repositories/QuerySQL.php");
 require_once("DB/Database.php");
 
 
-class User 
+class User extends Modelo
 {
     protected $tabla;
     protected $db;
@@ -21,6 +22,8 @@ class User
         $query->execute(array($userName,2, password_hash($pass, PASSWORD_BCRYPT)));
     }
 
+    
+
 
     public function getByUsername($userName)
     {
@@ -32,7 +35,6 @@ class User
 
     public function verifyUser($userName,$password) {        
         $user = $this->getByUsername($userName);
-        // encontró un user con el username que mandó, y tiene la misma contraseña
         if (!empty($user) && password_verify($password, $user->password)) {
             return true;
         } else {

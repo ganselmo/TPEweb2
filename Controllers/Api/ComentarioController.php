@@ -15,6 +15,7 @@ class ComentarioController extends ApiController
     public function allInCancion($idCancion)
     {
         $comentarios = $this->model->allInCancion($idCancion);
+
         $this->json->response($comentarios,200);
     }
 

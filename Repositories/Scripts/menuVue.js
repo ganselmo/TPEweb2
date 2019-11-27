@@ -6,7 +6,8 @@ let menu = new Vue({
     methods:{
         redirect(event)
         {   
-            window.location.href = event.target.innerText + "/Get";            
+
+            window.location.href = event.currentTarget.getAttribute("data-direct") + "/Get";            
         }
     }
   })
