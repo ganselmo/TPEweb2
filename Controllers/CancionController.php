@@ -10,7 +10,7 @@ class CancionController extends Controller
     function __construct()
     {
         parent::__construct();
-        $this->view = new CancionView($this->session);
+        $this->view = new CancionView();
     }
     public function index()
     {   
@@ -21,19 +21,15 @@ class CancionController extends Controller
         $this->view->show();
     }
 
-    public function edit($id)
+    public function edit()
     {
-        $this->view->edit($id);
+        $this->view->edit();
 
     }
 
     public function create()
     {
-        if ($this->session->isLoggedIn()) {
-
             $this->view->create();
-        } else {
-            Route::directDefault();
-        }
+
     }
 }

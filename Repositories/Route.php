@@ -31,17 +31,26 @@ class Route
   
     public function direct()
     {
-        require_once("Controllers/".$this->controller.".php");
+        
 
-        $controller=new $this->controller;
-        $method  =$this->controllerMethod;
+        require_once("Controllers/".$this->controller.".php");
+        require_once("Controllers/RoleController.php");
         
-        $params = $this->parameters;
-        
-        if(isset($params))
-        $controller->$method($params); 
+        if((new RoleController())->validateRole("SYNC",$this->httpMethod,$this->url))
+        {
+            $controller= new $this->controller;
+            $method  =$this->controllerMethod;
+            $params = $this->parameters;
+            if(isset($params))
+            $controller->$method($params); 
+            else
+            $controller->$method();
+        }
         else
-        $controller->$method();
+        {
+            $this->directDefault();
+        }
+        
 
     }
 

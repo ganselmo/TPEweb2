@@ -10,7 +10,7 @@ class ArtistaController extends Controller
     {
         parent::__construct();
 
-        $this->view = new ArtistaView($this->session);
+        $this->view = new ArtistaView();
     }
 
     public function index()
@@ -20,23 +20,14 @@ class ArtistaController extends Controller
 
     public function create()
     {
-        if ($this->session->isLoggedIn()) {
+        $this->view->create();
 
-            $this->view->create();
-        } else {
-            Route::directDefault();
-        }
     }
 
-  
-    public function edit($id)
+
+    public function edit()
 
     {
-        if ($this->session->isLoggedIn()) {
-            $this->view->edit();
-        } else {
-            Route::directDefault();
-        }
+        $this->view->edit();
     }
-    
 }

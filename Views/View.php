@@ -5,13 +5,13 @@ class View
 {
     protected $smarty;
     protected $errors;
-    function __construct(Session $sessionData)
+    function __construct()
     {
        
         $this->smarty = new Smarty();
 
         $this->smarty->assign('titulo', "Bienvenidos");
-        $this->smarty->assign('session', $sessionData);
+
         $this->smarty->assign('BASE', BASE);
     }
 
