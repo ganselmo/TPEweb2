@@ -19,28 +19,12 @@ class ComentarioController extends ApiController
         $this->json->response($comentarios,200);
     }
 
-
-    public function show($id)
-    {
-        $comentario = $this->model->getByID($id);  
-        $this->json->response($comentario,200);
-    }
-
-    public function save($data)
-    {
-           
-        $this->model->update($data);
-        $this->json->responseStatus(200);
-    }
-
     public function insert($data)
     {
-
+        $data->user = $this->session->getLoggedUserId();        
         $this->model->create($data);
-        $this->json->responseStatus(200);
-        
+        $this->json->response("Sucess",200); 
     }
-
     public function delete($id)
     {
         $this->model->delete($id);

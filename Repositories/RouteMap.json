@@ -5,21 +5,18 @@
             "httpMethod": "GET",
             "controller": "HomeController",
             "controllerMethod": "index"
-
         },
         {
             "url": "Artistas/Get",
             "httpMethod": "GET",
             "controller": "ArtistaController",
             "controllerMethod": "index"
-
         },
         {
             "url": "Artistas/Get/[id]",
             "httpMethod": "GET",
             "controller": "ArtistaController",
             "controllerMethod": "show"
-
         },
         {
             "url": "Artistas/Create",
@@ -32,22 +29,18 @@
             "httpMethod": "GET",
             "controller": "UserController",
             "controllerMethod": "LoginView"
-           
         },
         {
             "url": "User/Register",
             "httpMethod": "GET",
             "controller": "UserController",
             "controllerMethod": "registerView"
-           
-        }
-        , 
+        },
         {
             "url": "Canciones/Get",
             "httpMethod": "GET",
             "controller": "CancionController",
             "controllerMethod": "index"
-
         },
         {
             "url": "Canciones/Create",
@@ -60,8 +53,15 @@
             "httpMethod": "GET",
             "controller": "CancionController",
             "controllerMethod": "show"
-
+        },
+        {
+            "url": "Imagenes/Cancion/New",
+            "httpMethod": "POST",
+            "controller": "ImagenCancionController",
+            "controllerMethod": "create",
+            "parameters": [
+                "id"
+            ]
         }
-      
     ]
 }

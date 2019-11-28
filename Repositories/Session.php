@@ -38,6 +38,20 @@ class Session
             return null;
         }
     }
+    
+    public function getLoggedUserId()
+    {
+        $this->checkSession();
+        if(isset($_SESSION['ID_USER']))
+        {
+            return $_SESSION['ID_USER'];
+        }
+        
+        else
+        {
+            return null;
+        }
+    }
 
     public function checkSession()
     {

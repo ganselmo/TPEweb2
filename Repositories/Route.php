@@ -23,10 +23,12 @@ class Route
         if(!$parameters){
             if($this->httpMethod == "POST")
             $this->parameters = $_POST;
+
         }
         else{
             $this->parameters=$parameters;
         }
+        
     }
   
     public function direct()

@@ -11,10 +11,10 @@ class ImagenCancionModel extends Modelo
         $this->tabla = "cancionImagenes";
     }
 
-    public function save($data)
+    public function create($id_cancion, $filePath)
     {
-        $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('nombre', 'duracion', 'genero', 'album', 'id_artista', 'ranking')));
-        $sentencia->execute([$data->nombre, $data->duracion, $data->genero, $data->album, $data->id_artista, $data->ranking]);
+        $query = $this->db->prepare($this->query->insert($this->tabla, array('id_cancion','path')));
+        $query->execute([$id_cancion,$filePath]);
     }
 
 

@@ -1,7 +1,7 @@
 <?php
-require_once("Models/HomeView.php");
+
 require_once("Models/ImagenCancionModel.php");
-class HomeController extends Controller 
+class ImagenCancionCOntroller extends Controller
 {
 
     public function __construct()
@@ -9,12 +9,27 @@ class HomeController extends Controller
         parent::__construct();
         $this->model = new ImagenCancionModel();
     }
-    function save()
+    function create($data)
     {
-        $this->model->save();
+
+
+ 
+        if ($_FILES["input_name"]['error'] == 0) {
+            $filePath = "./Repositories/images/canciones/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['input_name']['name'], PATHINFO_EXTENSION));
+
+            move_uploaded_file($_FILES['input_name']["tmp_name"], $filePath);
+
+            $this->model->create($data['id_cancion'], $filePath);
+        }
+        else
+        {
+
+            
+        }
+        $url = "Canciones/Get/".$data['id_cancion'];
+        header( "Location:".BASE.$url);
+
+
+        
     }
-    function delete()
-    {
-        $this->model->save();
-    }        
 }

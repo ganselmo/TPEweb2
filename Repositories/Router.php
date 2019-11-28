@@ -104,13 +104,14 @@ class Router
                               
                                 $route = new Route($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
                                 $jsonRoute->getControllerMethod(),  $parameters[$parameter] );
-
+                               
                                 $route->direct();
                                
                             }
                             else{
                                 $route = new Route($jsonRoute->getURL(), $jsonRoute->getHTTPMethod(), $jsonRoute->getController(), 
                                 $jsonRoute->getControllerMethod(), false );
+                                
                                 $route->direct();
                                 
                             }

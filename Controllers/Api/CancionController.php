@@ -13,15 +13,26 @@ class CancionController extends ApiController
     public function index()
     {
         $canciones = $this->model->getAllWithArtista();
-        $this->json->response($canciones,200);
+        $this->json->response($canciones, 200);
     }
 
     public function show($id)
     {
 
         $cancion = $this->model->getWithArtista($id);
+
         $cancion->imagenes = $this->model->getImages($id);
-        $this->json->response($cancion,200);
+
+
+        if (count($this->model->getImages($id))<1) {
+            $cancion->imagenes[0]= new \stdClass();
+            $cancion->imagenes[0]->id = 0;
+            $cancion->imagenes[0]->id_cancion = $id;
+            $cancion->imagenes[0]->path = "./Repositories/images/canciones/noimage.png";
+        } else {
+            $cancion->imagenes = $this->model->getImages($id);
+        }
+        $this->json->response($cancion, 200);
     }
     public function save($data)
     {
