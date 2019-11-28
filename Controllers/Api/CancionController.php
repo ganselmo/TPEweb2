@@ -20,6 +20,7 @@ class CancionController extends ApiController
     {
 
         $cancion = $this->model->getWithArtista($id);
+        $cancion->imagenes = $this->model->getImages($id);
         $this->json->response($cancion,200);
     }
     public function save($data)

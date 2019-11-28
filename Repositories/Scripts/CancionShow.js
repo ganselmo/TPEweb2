@@ -3,7 +3,8 @@ let cancionShow = new Vue({
     data: {
         cancionId :"",
         cancion: {
-            artista:{}
+            artista:{},
+            imagenes:[]
         },
         loading: true,
         comentarios:[]

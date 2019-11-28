@@ -3,19 +3,19 @@
 
 <div id="cancionesShow" class="card" v-if="!loading">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
+    <div class="carousel-inner" >
+      <div class="carousel-item" v-for="(imagen,key) in cancion.imagenes" v-bind:class="{ active: key==0 } ">
+        <img v-bind:src="imagen.path" class="d-block w-100 " alt="...">
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
   <div class="card-header">
     <h5 class="card-title"> {{cancion.nombre}}</h5>
@@ -25,6 +25,11 @@
 
     <p class="card-text">Autor: {{cancion.artista.apellido}}, {{cancion.artista.nombre}}</p>
     <p class="card-text">Ranking:{{cancion.ranking}}</p>
+    <form action="Canciones/Imagen" method="POST" enctype="multipart/form-data">
+      <input type="file" name="inupt_name" id="image">
+      <input type="hidden" v-model="cancion.id">
+      <button class="btn btn-info col-md-2 float-right" type="submit">Agregar Imagen</button>
+    </form>
   </div>
   <div class="card-body">
     <h6 class="card-title"> Comentarios</h6>
@@ -46,6 +51,7 @@
 
         </div>
         <div>
+
           <button class="btn btn-danger col-md-2 float-right">Borrar</button>
         </div>
       </li>

@@ -18,7 +18,6 @@ let cancionesTable = new Vue({
         {
             let value = event.target.value;
             window.location.href = "Canciones/Get/"+ value;
-
         },
         editar(event)
         {
