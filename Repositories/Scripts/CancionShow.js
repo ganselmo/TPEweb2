@@ -13,7 +13,12 @@ let cancionShow = new Vue({
         comentarioError: "",
         fileError: "",
         actualImage: "",
-        imageToUpload: ""
+        imageToUpload: "",
+
+        canComentar: false,
+        canAgregarImagen : false,
+        canBorrarImagen : false,
+        canBorrarComentario : false
     },
     methods: {
         checkear(event)
@@ -158,10 +163,23 @@ let cancionShow = new Vue({
             }
         }
     },
+    created: function () {
+
+        headerMan.$watch('access', function () {
+            cancionShow.canComentar = headerMan.evaluate('Comentarios/New');
+    
+            cancionShow.canAgregarImagen = headerMan.evaluate('Imagenes/Cancion/New');
+            cancionShow.canBorrarImagen = headerMan.evaluate('Imagenes/Delete');
+            cancionShow.canBorrarComentario = headerMan.evaluate('Comentarios/Delete');
+          
+        })
+    
+    },
     mounted: function () {
 
         this.getCancion();
         this.getComentarios();
+
 
     },
 

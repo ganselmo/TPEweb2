@@ -1,7 +1,10 @@
 let ArtistasTable = new Vue({
     el: '#artistasTable',
     data: {
-        artistas: []
+        artistas: [],
+        canEditar : false,
+        canNuevo : false,
+        canBorrar : false
     },
     methods: {
 
@@ -44,6 +47,19 @@ let ArtistasTable = new Vue({
 
 
     },
+    created: function () {
+
+        headerMan.$watch('access', function () {
+    
+
+            ArtistasTable.canEditar = headerMan.evaluate('Artistas/Edit/[id]')
+            ArtistasTable.canNuevo = headerMan.evaluate('Artistas/New')
+            ArtistasTable.canBorrar = headerMan.evaluate('Artistas/Delete')
+          
+        })
+    
+    }
+    ,
     mounted: function () {
         this.getArtistas();
         

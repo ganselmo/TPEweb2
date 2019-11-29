@@ -28,5 +28,22 @@ class AccessModel extends Modelo
         return $result;
 
     }
+
+    public function allForRole($session_role)
+    {
+        if(is_null($session_role))
+        {
+            $query = $this->db->prepare("SELECT * FROM ACCESS WHERE ID_ROLE = 1 ");
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
+        }
+        else{
+            $query = $this->db->prepare("SELECT * FROM ACCESS WHERE ID_ROLE = ? " );
+            $query->execute([$session_role]);
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
+        }
+      
+        return $result;
+    }
     
 }

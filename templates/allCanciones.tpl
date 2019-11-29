@@ -28,13 +28,13 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <button class="btn btn-info" v-bind:value="cancion.id" v-on:click="ver">Ver</button>
+                                    <button class="btn btn-info" v-bind:value="cancion.id" v-if="canVer" v-on:click="ver">Ver</button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button class="btn btn-warning" v-bind:value="cancion.id" v-on:click="editar">Editar</button>
+                                    <button class="btn btn-warning" v-bind:value="cancion.id" v-if="canEditar" v-on:click="editar">Editar</button>
                                 </div>
                                 <div class="col-sm-4">
-                                    <button class="btn btn-danger" v-bind:value="cancion.id" v-on:click="borrar">Borrar</button>
+                                    <button class="btn btn-danger" v-bind:value="cancion.id" v-if="canBorrar" v-on:click="borrar">Borrar</button>
                                 </div>
 
                             </div>
@@ -46,7 +46,7 @@
         </table>
     </div>
     <div class="row">
-        <button class="btn btn-info btn-md" v-on:click="nuevo" type="button">Nuevo</button>
+        <button class="btn btn-info btn-md" v-if="canNuevo" v-on:click="nuevo" type="button">Nuevo</button>
     </div>
 </div>
 <script src="./Repositories/Scripts/CancionesVue.js"></script>

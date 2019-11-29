@@ -32,10 +32,10 @@
     <p class="card-text">Ranking: {{cancion.ranking}}</p>
     <p class="card-text">Puntuacion: {{puntuacion()}}</p>
     <form action="Imagenes/Cancion/New" method="POST" enctype="multipart/form-data">
-      <input type="file" name="input_name" id="file" >
+      <input type="file" name="input_name" id="file"  v-if="canAgregarImagen">
       <input type="hidden" name="id_cancion" v-model="cancionId">
-      <button class="btn btn-danger col-md-2 float-right ml-1" v-on:click="borrarImagen" type="button">Borrar Actual</button>
-      <button class="btn btn-info col-md-2 float-right" v-on:click="checkear" type="button">Agregar Imagen</button>
+      <button class="btn btn-danger col-md-2 float-right ml-1" v-on:click="borrarImagen"  v-if="canBorrarImagen" type="button">Borrar Actual</button>
+      <button class="btn btn-info col-md-2 float-right" v-on:click="checkear" type="button"  v-if="canAgregarImagen">Agregar Imagen</button>
       
     </form>
     
@@ -66,12 +66,12 @@
         </div>
         <div>
 
-          <button class="btn btn-danger col-md-2 float-right" v-on:click="borrarComentario(comentario.id)">Borrar</button>
+          <button  v-if="canBorrarComentario" class="btn btn-danger col-md-2 float-right" v-on:click="borrarComentario(comentario.id)">Borrar</button>
         </div>
       </li>
     </ul>
   </div>
-  <div class="card-body">
+  <div class="card-body"  v-if="canComentar">
     <h6 class="card-title">
       Nuevo comentario
     </h6>

@@ -25,12 +25,12 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <button class="btn btn-info" v-bind:value="artista.id" v-on:click="editar">Editar</button>
+                                    <button class="btn btn-info" v-if="canEditar" v-bind:value="artista.id" v-on:click="editar">Editar</button>
                                 </div>
                                
                      
                                 <div class="col-sm-4">
-                                    <button class="btn btn-danger" v-bind:value="artista.id" v-on:click="borrar">Borrar</button>
+                                    <button class="btn btn-danger" v-if="canBorrar" v-bind:value="artista.id" v-on:click="borrar">Borrar</button>
                                 </div>
 
                             </div>
@@ -42,7 +42,7 @@
         </table>
     </div>
     <div class="row">
-        <button class="btn btn-info btn-md" v-on:click="nuevo" type="button">Nuevo</button>
+        <button class="btn btn-info btn-md" v-if="canNuevo" v-on:click="nuevo" type="button">Nuevo</button>
     </div>
 </div>
 <script src="./Repositories/Scripts/ArtistasVue.js"></script>

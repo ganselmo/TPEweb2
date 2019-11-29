@@ -1,7 +1,11 @@
 let cancionesTable = new Vue({
     el: '#cancionesTable',
     data: {
-        canciones: []
+        canciones: [],
+        canVer: false,
+        canEditar : false,
+        canNuevo : false,
+        canBorrar : false
     },
     methods: {
 
@@ -52,6 +56,19 @@ let cancionesTable = new Vue({
 
 
     },
+    created: function () {
+
+        headerMan.$watch('access', function () {
+    
+            cancionesTable.canVer = headerMan.evaluate('Canciones/Get/[id]')
+            cancionesTable.canEditar = headerMan.evaluate('Canciones/Edit/[id]')
+            cancionesTable.canNuevo = headerMan.evaluate('Canciones/New')
+            cancionesTable.canBorrar = headerMan.evaluate('Canciones/Delete')
+          
+        })
+    
+    }
+    ,
     mounted: function () {
         this.getCanciones();
         

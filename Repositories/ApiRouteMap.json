@@ -99,6 +99,14 @@
             ]
            
         },
+       
+        {
+            "url": "Access/All",
+            "httpMethod": "GET",
+            "controller": "AccessController",
+            "controllerMethod": "all"
+
+        },
         {
             "url": "Canciones/All",
             "httpMethod": "GET",

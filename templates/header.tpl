@@ -12,24 +12,30 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
+{literal}
+    
 
 <body>
     <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
 
-        <a class="navbar-brand" href="{BASE}">Home</a>
+        <a class="navbar-brand" href="Home">Home</a>
         
         <span class="navbar-brand"></span>
         <template v-if="isLoggedIn()">
+            <a class="navbar-brand" href="#">{{username}}</a>
+        </template>
+        <template v-if="isLoggedIn()">
             <a class="navbar-brand" href="" v-on:click="logout">Log out</a>
         </template>
+        
         <span class="navbar-brand"></span>
         <template v-if="!isLoggedIn()">
-            <a class="navbar-brand" href="{BASE}User/Login">Login</a>
+            <a class="navbar-brand" href="User/Login">Login</a>
             
         </template>
         <span class="navbar-brand"></span>
         <template  v-if="!isLoggedIn()">
-            <a class="navbar-brand" href="{BASE}User/Register">Register</a>
+            <a class="navbar-brand" href="User/Register">Register</a>
             
         </template>
         <span class="navbar-brand"></span>
@@ -39,6 +45,8 @@
     <div class="container">
         <div class="row justify-content-md-center mt-md-3 mb-md-3">
 
-            <h1>{$titulo}</h1>
+            <h1>Cancionero</h1>
 
         </div>
+
+{/literal}
