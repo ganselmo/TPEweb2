@@ -48,4 +48,9 @@ class RoleController extends ApiController
         $this->model->delete($id);
         $this->json->responseStatus(200);
     }
+    public function all()
+    {
+        $roles = $this->model->get();
+        $this->json->response($roles,200);
+    }
 }

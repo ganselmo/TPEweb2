@@ -13,10 +13,10 @@
             "controllerMethod": "index"
         },
         {
-            "url": "Artistas/Get/[id]",
+            "url": "Artistas/Edit/[id]",
             "httpMethod": "GET",
             "controller": "ArtistaController",
-            "controllerMethod": "show"
+            "controllerMethod": "edit"
         },
         {
             "url": "Artistas/Create",
@@ -55,6 +55,12 @@
             "controllerMethod": "show"
         },
         {
+            "url": "Canciones/Edit/[id]",
+            "httpMethod": "GET",
+            "controller": "CancionController",
+            "controllerMethod": "edit"
+        },
+        {
             "url": "Imagenes/Cancion/New",
             "httpMethod": "POST",
             "controller": "ImagenCancionController",
@@ -62,6 +68,12 @@
             "parameters": [
                 "id"
             ]
+        },
+        {
+            "url": "Users/Get",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "index"
         }
     ]
 }

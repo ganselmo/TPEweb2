@@ -64,7 +64,31 @@
             "controllerMethod": "userSession"
         }
         ,
+        {
+            "url": "Users/All",
+            "httpMethod": "GET",
+            "controller": "UserController",
+            "controllerMethod": "getAll"
+        }
+        ,
+        {
+            "url": "Roles/All",
+            "httpMethod": "GET",
+            "controller": "RoleController",
+            "controllerMethod": "All"
+        }
+        ,
         
+        {
+            "url": "User/Role/Patch",
+            "httpMethod": "PATCH",
+            "controller": "UserController",
+            "controllerMethod": "rolePatch",
+            "parameters": [
+                "data"
+            ]
+        }
+        ,
         {
             "url": "User/Register",
             "httpMethod": "POST",
@@ -153,6 +177,16 @@
             "url": "Comentarios/Delete",
             "httpMethod": "DELETE",
             "controller": "ComentarioController",
+            "controllerMethod": "delete",
+            "parameters": [
+                "id"
+            ]
+        }
+        ,
+        {
+            "url": "Imagenes/Delete",
+            "httpMethod": "DELETE",
+            "controller": "ImagenCancionController",
             "controllerMethod": "delete",
             "parameters": [
                 "id"

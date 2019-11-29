@@ -9,4 +9,8 @@ class UserView extends View{
         $this->smarty->display('templates/userRegister.tpl');
     }
 
+    public function allUsers(){
+        $this->smarty->display('templates/allUsers.tpl');  
+    }
+
 }

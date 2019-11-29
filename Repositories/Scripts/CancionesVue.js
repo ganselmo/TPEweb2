@@ -14,6 +14,10 @@ let cancionesTable = new Vue({
             .then(res => res.json())
             .then(data => this.canciones = data)
         },
+        nuevo()
+        {
+            window.location.href = "Canciones/Create";
+        },
         ver(event)
         {
             let value = event.target.value;
@@ -21,11 +25,29 @@ let cancionesTable = new Vue({
         },
         editar(event)
         {
-            
+            let value = event.target.value;
+            window.location.href = "Canciones/Edit/"+ value;
         },
         borrar(event)
         {
-            
+            let value = event.target.value;
+            let data =
+            {
+                id:value
+            }
+            let url = "api/Canciones/Delete";
+            fetch(url, {
+                method: 'DELETE',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+                .catch(error => console.error(error))
+                .then(response => {
+                    console.log('Success:', response);
+                    this.getCanciones();
+                })
         }
 
 

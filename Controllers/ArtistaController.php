@@ -23,8 +23,6 @@ class ArtistaController extends Controller
         $this->view->create();
 
     }
-
-
     public function edit()
 
     {

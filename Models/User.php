@@ -42,9 +42,21 @@ class User extends Modelo
         }
     }
 
-    public function all()
+    public function allProtected()
     {
-        
+        $query = $this->db->prepare("SELECT usuarios.id, usuarios.user, roles.id as roleId, roles.name as roleName FROM USUARIOS INNER JOIN ROLES ON ROLES.ID=USUARIOS.ID_ROLE ORDER BY USUARIOS.ID"); 
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    
+    }
+
+    public function rolePatch($data)
+    {
+        $query = $this->db->prepare("UPDATE USUARIOS SET id_role = ? where id = ?"); 
+        $query->execute([$data->id_role,$data->id]);
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
     }
 
 }

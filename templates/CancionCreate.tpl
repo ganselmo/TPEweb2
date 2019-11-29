@@ -1,26 +1,29 @@
 {include file="header.tpl"}
+{literal}
 
-<form action="{BASE}Canciones/New" method="POST">
+<form id="cancionCreate">
   <div class="form-group">
-     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" name="nombre">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" name="nombre" v-model="cancion.nombre">
     <label for="duracion">Duración</label>
-    <input type="number" class="form-control" name="duracion">
+    <input type="text" class="form-control" name="duracion" v-model="cancion.duracion">
     <label for="genero">Género</label>
-    <input type="text" class="form-control" name="genero">
+    <input type="text" class="form-control" name="genero" v-model="cancion.genero">
     <label for="album">Álbum</label>
-    <input type="text" class="form-control" name="album">
+    <input type="text" class="form-control" name="album" v-model="cancion.album">
     <label for="id_artista">Artista</label>
-    <select name="id_artista" class="form-control">
-      {foreach from=$artistas item=artista}
-      <option value="{$artista->id}">{$artista->nombre} {$artista->apellido}</option>
-      {/foreach}
+   
+    <select class="form-control"  v-model="select" >
+      <option v-for="artista in artistas"   v-bind:value="artista.id">
+        {{artista.apellido}},  {{artista.nombre}}</option>
     </select>
     <label for="ranking">Ranking</label>
-    <input type="text" class="form-control" name="ranking">
+    <input type="text" class="form-control" name="ranking" v-model="cancion.ranking">
   </div>
-  <button type="submit" class="btn btn-primary">Nuevo</button>
- 
+  <button type="button" class="btn btn-primary" v-on:click="aceptar">Aceptar</button>
 </form>
 
+{/literal}
+
+<script src="./Repositories/Scripts/CancionNew.js"></script>
 {include file="footer.tpl"}

@@ -15,6 +15,7 @@ class CancionModel extends Modelo
     {
         $sentencia = $this->db->prepare($this->query->insert($this->tabla, array('nombre', 'duracion', 'genero', 'album', 'id_artista', 'ranking')));
         $sentencia->execute([$data->nombre, $data->duracion, $data->genero, $data->album, $data->id_artista, $data->ranking]);
+        var_dump($data);
     }
 
     public function update($data)

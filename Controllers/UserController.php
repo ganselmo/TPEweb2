@@ -9,6 +9,10 @@ class UserController extends Controller
         $this->view = new UserView();
 
     }
+    function index()
+    {
+        $this->view->allUsers();
+    }
     function loginView()
     {
         $this->view->loginView();

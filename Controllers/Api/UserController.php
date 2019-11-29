@@ -10,9 +10,13 @@ class UserController extends ApiController
         $this->model = new User();
     }
 
-    function all()
+    function getAll()
     {
-        return $this->model->all();
+        
+
+        $users = $this->model->allProtected();
+
+        $this->json->response($users,200);
     }
     function loginView()
     {
@@ -63,5 +67,10 @@ class UserController extends ApiController
     function userSession()
     {
         $this->json->response($this->session->getLoggedUserName(),200 );
+    }
+    function rolePatch($data)
+    {
+        $this->model->rolePatch($data);
+        $this->json->response("Correcto",200 );
     }
 }

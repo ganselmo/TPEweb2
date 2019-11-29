@@ -11,9 +11,6 @@ class ImagenCancionCOntroller extends Controller
     }
     function create($data)
     {
-
-
- 
         if ($_FILES["input_name"]['error'] == 0) {
             $filePath = "./Repositories/images/canciones/" . uniqid("", true) . "." . strtolower(pathinfo($_FILES['input_name']['name'], PATHINFO_EXTENSION));
 
@@ -23,7 +20,6 @@ class ImagenCancionCOntroller extends Controller
         }
         else
         {
-
             
         }
         $url = "Canciones/Get/".$data['id_cancion'];

@@ -28,6 +28,6 @@ class ComentarioController extends ApiController
     public function delete($id)
     {
         $this->model->delete($id);
-        $this->json->responseStatus(200);
+        $this->json->response("Sucess",200);
     }
 }

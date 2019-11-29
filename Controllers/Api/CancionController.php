@@ -37,13 +37,13 @@ class CancionController extends ApiController
     public function save($data)
     {
         $this->model->update($data);
-        $this->json->responseStatus(200);
+        $this->json->response("Satisfactorio", 200);
     }
 
     public function insert($data)
     {
         $this->model->create($data);
-        $this->json->responseStatus(200);
+        $this->json->response("Satisfactorio", 200);
     }
 
     public function delete($id)

@@ -29,24 +29,31 @@
     <p class="card-text">Album: {{cancion.album}}</p>
 
     <p class="card-text">Autor: {{cancion.artista.apellido}}, {{cancion.artista.nombre}}</p>
-    <p class="card-text">Ranking:{{cancion.ranking}}</p>
+    <p class="card-text">Ranking: {{cancion.ranking}}</p>
+    <p class="card-text">Puntuacion: {{puntuacion()}}</p>
     <form action="Imagenes/Cancion/New" method="POST" enctype="multipart/form-data">
-      <input type="file" name="input_name" id="imageToUpload">
+      <input type="file" name="input_name" id="file" >
       <input type="hidden" name="id_cancion" v-model="cancionId">
       <button class="btn btn-danger col-md-2 float-right ml-1" v-on:click="borrarImagen" type="button">Borrar Actual</button>
-      <button class="btn btn-info col-md-2 float-right" type="submit">Agregar Imagen</button>
+      <button class="btn btn-info col-md-2 float-right" v-on:click="checkear" type="button">Agregar Imagen</button>
       
     </form>
+    
+
+  </div>
+  <div class="alert alert-danger" role="alert" v-if='fileError!=""'>
+    {{fileError}}
   </div>
   <div class="card-body">
     <h6 class="card-title"> Comentarios</h6>
+    <span v-if="comentarios.length==0">No hay comentarios</span>
     <ul class="list-group " v-for="comentario in comentarios">
 
       <li class="list-group-item mt-1">
         <div class="row">
-          <div class="col-md-6 ">{{comentario.timestamp}}</div>
+          <div class="col-md-6 "><Strong>{{comentario.timestamp}}</Strong></div>
 
-          <div class="col-md-6 col-md-offset-12 text-right">{{comentario.user}}</div>
+          <div class="col-md-6 col-md-offset-12 text-right"><Strong>{{comentario.user}}</Strong></div>
         </div>
         <div class="row">
 
@@ -59,7 +66,7 @@
         </div>
         <div>
 
-          <button class="btn btn-danger col-md-2 float-right">Borrar</button>
+          <button class="btn btn-danger col-md-2 float-right" v-on:click="borrarComentario(comentario.id)">Borrar</button>
         </div>
       </li>
     </ul>

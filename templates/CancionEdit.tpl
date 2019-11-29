@@ -1,22 +1,28 @@
 {include file="header.tpl"}
+{literal}
 
-<form action="{BASE}Canciones/Patch" method="POST">
+
+<form id="cancionEdit">
   <div class="form-group">
     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" name="nombre" value="{$cancion->nombre}">
+    <input type="text" class="form-control" name="nombre" v-model="cancion.nombre">
     <label for="duracion">Duración</label>
-    <input type="number" class="form-control" name="duracion" value="{$cancion->duracion}">
+    <input type="text" class="form-control" name="duracion" v-model="cancion.duracion">
     <label for="genero">Género</label>
-    <input type="text" class="form-control" name="genero" value="{$cancion->genero}">
+    <input type="text" class="form-control" name="genero" v-model="cancion.genero">
     <label for="album">Álbum</label>
-    <input type="text" class="form-control" name="album" value="{$cancion->album}">
+    <input type="text" class="form-control" name="album" v-model="cancion.album">
     <label for="id_artista">Artista</label>
-    <input type="text" class="form-control" name="id_artista" value="{$cancion->id_artista}">
+   
+    <select class="form-control"  v-model="select" >
+      <option v-for="artista in artistas" v-bind:value="artista.id" >
+        {{artista.apellido}},  {{artista.nombre}}</option>
+    </select>
     <label for="ranking">Ranking</label>
-    <input type="text" class="form-control" name="ranking" value="{$cancion->ranking}">
-    <input type="hidden" name="id" value="{$cancion->id}">
+    <input type="text" class="form-control" name="ranking" v-model="cancion.ranking">
   </div>
-  <button type="submit" class="btn btn-primary">Aceptar</button>
+  <button type="button" class="btn btn-primary" v-on:click="aceptar">Aceptar</button>
 </form>
-
+<script src="./Repositories/Scripts/CancionEdit.js"></script>
+{/literal}
 {include file="footer.tpl"}

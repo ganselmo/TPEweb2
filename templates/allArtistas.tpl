@@ -3,71 +3,50 @@
 {literal}
     
 
-<div class = "row">
-    <table class="table table-hover">
-    <thead class="thead-light">
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Fecha de nacimiento</th>
-            <th>Ranking</th>
-            <th>Accion</th>
+<div id="artistasTable">
+    <div class="row">
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Ranking</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="artista in artistas">
+                    <td>{{artista.nombre}}</td>
+                    <td>{{artista.apellido}}</td>
+                    <td>{{artista.fechanac}}</td>
+                    <td>{{artista.ranking}}</td>
+                    <td>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <button class="btn btn-info" v-bind:value="artista.id" v-on:click="editar">Editar</button>
+                                </div>
+                               
+                     
+                                <div class="col-sm-4">
+                                    <button class="btn btn-danger" v-bind:value="artista.id" v-on:click="borrar">Borrar</button>
+                                </div>
 
-        </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>    
-  <div class="container">
-                <div class="row">
-              <div class="col-sm-4">
-                        <form action="Artistas/Get&" method="GET">
-                            <button class= "btn btn-primary btn-md" type="submit">Ver</button>
-                        </form>
-                    </div>
-            {if $session->isLoggedIn()}
-           
-          
+                            </div>
+                        </div>
+                    </td>
+                </tr>
 
-                  
-
-                    <div class="col-sm-4">
-                        <form action="Artistas/Edit/{$artista->id}" method="GET">
-                            <button class= "btn btn-warning btn-md" type="submit">Modificar</button>
-                        </form>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <form action="Artistas/Delete" method="POST">
-                            <input type="hidden" name="id" value="{$artista->id}">
-                            <button class= "btn btn-danger btn-md" type="submit">Borrar</button>
-                        </form>
-                    </div>
-                
-                </div>
-            </div
-            </td>
-           
-            {/if}
-      
-        </tr>
-        {/foreach}
-    </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <button class="btn btn-info btn-md" v-on:click="nuevo" type="button">Nuevo</button>
+    </div>
 </div>
-<div class = "row">
+<script src="./Repositories/Scripts/ArtistasVue.js"></script>
 
-             
-                        <form action="Artistas/Create" method="GET">
-                            <button class= "btn btn-info btn-md" type="submit">Nuevo</button>
-                        </form>
-
-</div>
-{/literal}
 <script></script>
+{/literal}
 {include file="footer.tpl"}
