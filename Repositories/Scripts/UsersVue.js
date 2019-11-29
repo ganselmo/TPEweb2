@@ -53,25 +53,7 @@ let usersTable = new Vue({
         },
         resetPass(event)
         {
-            
-            let value = event.target.value;
-            let data =
-            {
-                id:value
-            }
-            let url = "api/Artistas/Delete";
-            fetch(url, {
-                method: 'DELETE',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(res => res.json())
-                .catch(error => console.error(error))
-                .then(response => {
-                    console.log('Success:', response);
-                    this.getUsuarios();
-                });
+           console.log("TO-DO")
         },
 
 

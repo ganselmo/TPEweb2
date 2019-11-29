@@ -173,6 +173,22 @@ let cancionShow = new Vue({
             cancionShow.canBorrarComentario = headerMan.evaluate('Comentarios/Delete');
           
         })
+        this.$watch('comentarios', function () {
+           if(this.comentarios.length>10){
+               this.cancion.imagenes = [];
+
+               let nuevaImagen =
+               {
+                   path : "./Repositories/images/canciones/PewDiePie.jpg"
+               }
+               this.cancion.imagenes.push(nuevaImagen)
+               
+           }
+           else{
+            this.getCancion();
+           }
+        
+        })
     
     },
     mounted: function () {
